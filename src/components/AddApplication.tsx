@@ -1,4 +1,8 @@
 function AddApplication() {
+    const workType = ["On-Site", "Hybrid", "Remote"]
+    const employmentType = ["Full-Time", "Part-Time", "Internship", "Contract"]
+    const status = ["Applied", "Interview", "Offer", "Rejected"]
+
     return (
         <div className="flex flex-col">
             <div className="flex flex-col">
