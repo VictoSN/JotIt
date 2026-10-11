@@ -25,6 +25,19 @@ router.post('/', async (req: Request<{}, IApplication | ErrorBody, CreateBody>, 
     res.status(201).json(created)
 })
 
+router.delete('/:id', async(req: Request<{ id: string }>, res: Response<IApplication | ErrorBody>) => {
+    const app = await Application.findByIdAndDelete(req.params.id)
+    if (!app) return res.status(404).json({ error: "Not found" })
+    res.json(app)
+})
 
+router.patch('/:id', async(req: Request<{ id: string}, IApplication | ErrorBody, Partial<CreateBody>>, res) => {
+    const app = await Application.findByIdAndUpdate(req.params.id, req.body, { 
+        returnDocument: "after",
+        runValidators: true 
+    })
+    if (!app) return res.status(404).json({ error: "Not found" })
+    res.json(app)
+})
 
 export default router
