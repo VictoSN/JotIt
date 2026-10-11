@@ -14,4 +14,11 @@ router.get('/', async(_req, res: Response<IApplication[] | ErrorBody>) => {
     }
 })
 
+router.get('/:id', async (req: Request<{ id: string}>, res: Response<IApplication | ErrorBody>) => {
+    const app = await Application.findById(req.params.id)
+    if (!app) return res.status(404).json({ error: "Not found" })
+    res.json(app)
+})
+
+
 export default router
