@@ -20,5 +20,11 @@ router.get('/:id', async (req: Request<{ id: string}>, res: Response<IApplicatio
     res.json(app)
 })
 
+router.post('/', async (req: Request<{}, IApplication | ErrorBody, CreateBody>, res) => {
+    const created = await Application.create(req.body)
+    res.status(201).json(created)
+})
+
+
 
 export default router
