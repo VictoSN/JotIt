@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { createApplication } from "../api/application"
 
 const WORK_TYPES = ["On-Site", "Hybrid", "Remote"] as const
 const EMPLOYMENT_TYPES = ["Full-Time", "Part-Time", "Internship", "Contract"] as const
@@ -32,6 +33,17 @@ function AddApplication() {
     const [status, setStatus] = useState<Status>("Applied")
     const [link, setLink] = useState("")
 
+    async function handleSubmit() {
+        try {
+            await createApplication({
+                companyName, position, location, workType, employmentType, expectedSalary: Number(expectedSalary), status, link,
+            })
+            console.log("Form sent")
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
     return (
         <div className="flex flex-col">
             <div className="flex flex-col">
@@ -53,7 +65,7 @@ function AddApplication() {
                 <input value={link} onChange={e => setLink(e.target.value)} placeholder="Link"></input>
             </div>
 
-            <button className='cursor-pointer'>Submit</button>
+            <button onClick={handleSubmit} className='cursor-pointer'>Submit</button>
         </div>
     )
 }
