@@ -1,7 +1,11 @@
 function AddApplication() {
-    const workType = ["On-Site", "Hybrid", "Remote"]
-    const employmentType = ["Full-Time", "Part-Time", "Internship", "Contract"]
-    const status = ["Applied", "Interview", "Offer", "Rejected"]
+    const WORK_TYPES = ["On-Site", "Hybrid", "Remote"] as const
+    const EMPLOYMENT_TYPES = ["Full-Time", "Part-Time", "Internship", "Contract"] as const
+    const STATUSES = ["Applied", "Interview", "Offer", "Rejected"] as const
+
+    type WorkType = typeof WORK_TYPES[number]
+    type EmploymentType = typeof EMPLOYMENT_TYPES[number]
+    type Status = typeof STATUSES[number]
 
     return (
         <div className="flex flex-col">
