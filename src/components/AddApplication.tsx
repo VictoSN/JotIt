@@ -33,11 +33,23 @@ function AddApplication() {
     const [status, setStatus] = useState<Status>("Applied")
     const [link, setLink] = useState("")
 
+    function clearInputs() {
+        setCompanyName("")
+        setPosition("")
+        setLocation("")
+        setWorkType("On-Site")
+        setEmploymentType("Full-Time")
+        setExpectedSalary("")
+        setStatus("Applied")
+        setLink("")
+    }
+
     async function handleSubmit() {
         try {
             await createApplication({
                 companyName, position, location, workType, employmentType, expectedSalary: Number(expectedSalary), status, link,
             })
+            clearInputs()
             console.log("Form sent")
         } catch (e) {
             console.error(e)
