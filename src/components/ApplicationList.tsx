@@ -11,7 +11,7 @@ function ApplicationList() {
     }, [])
 
     return (
-        <div className="flex flex-col">
+        <div>
             {applications.map(a => <ApplicationCard key={a._id} application={a} />)}
         </div>
     )
