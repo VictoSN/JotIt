@@ -40,7 +40,7 @@ function App() {
       <SearchBar />
       <AddApplication onAdd={handleSubmit} />
       <div className="flex flex-col">
-        <ApplicationStatistic />
+        <ApplicationStatistic applications={applications} />
         <ApplicationList applications={applications} onDelete={handleDelete} onDuplicate={handleDuplicate} />
       </div>
     </div>
