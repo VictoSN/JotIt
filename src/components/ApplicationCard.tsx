@@ -1,7 +1,7 @@
 function ApplicationCard() {
     return (
         <div>
-
+            
         </div>
     )
 }

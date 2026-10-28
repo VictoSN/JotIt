@@ -1,3 +1,5 @@
+import type { Application } from "../types"
+
 const BASE = "http://localhost:3000/applications"
 
 export async function createApplication(data: unknown) {
@@ -7,5 +9,11 @@ export async function createApplication(data: unknown) {
         body: JSON.stringify(data),
     })
     if (!res.ok) throw new Error("Failed to create application")
+    return res.json()
+}
+
+export async function getApplications(): Promise <Application[]> {
+    const res = await fetch(BASE)
+    if(!res.ok) throw new Error("Failed to fetch applications")
     return res.json()
 }
