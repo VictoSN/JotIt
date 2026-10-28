@@ -1,6 +1,6 @@
 import type { Application } from "../types"
 import ApplicationCard from "./ApplicationCard"
-import { deleteApplication, getApplications } from "../api/application"
+import { deleteApplication, duplicateApplication, getApplications } from "../api/application"
 import { useEffect, useState } from "react"
 
 function ApplicationList() {
@@ -19,11 +19,18 @@ function ApplicationList() {
         }
     }
 
-    
+    async function handleDuplicate(id: string) {
+        try {
+            const copy = await duplicateApplication(id)
+            setApplications(prev => [...prev, copy])
+        } catch (e) {
+            console.error(e)
+        }
+    }
 
     return (
         <div>
-            {applications.map(a => <ApplicationCard key={a._id} application={a} onDelete={handleDelete} />)}
+            {applications.map(a => <ApplicationCard key={a._id} application={a} onDelete={handleDelete} onDuplicate={handleDuplicate} />)}
         </div>
     )
 }

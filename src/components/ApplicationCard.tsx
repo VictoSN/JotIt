@@ -1,8 +1,9 @@
 import type { Application } from "../types"
 
-function ApplicationCard({ application, onDelete }: {
+function ApplicationCard({ application, onDelete, onDuplicate }: {
     application: Application
     onDelete: (id: string) => void
+    onDuplicate: (id: string) => void
 }) {
     const { _id, companyName, position, location, workType, employmentType, expectedSalary, status, link } = application
     return (
@@ -19,7 +20,7 @@ function ApplicationCard({ application, onDelete }: {
             </div>
             <div>
                 <button onClick={() => onDelete(_id)} className="cursor-pointer">Del</button>
-                <button className="cursor-pointer">Dup</button>
+                <button onClick={() => onDuplicate(_id)} className="cursor-pointer">Dup</button>
             </div>
         </div>
     )

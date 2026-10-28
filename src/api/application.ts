@@ -23,8 +23,8 @@ export async function deleteApplication(id: string) {
     if(!res.ok) throw new Error("Failed to delete application")
 }
 
-export async function duplicateApplication(id: string) {
-    const res = await fetch(`${BASE}/${id}`, { method: "POST" })
+export async function duplicateApplication(id: string): Promise<Application> {
+    const res = await fetch(`${BASE}/${id}/duplicate`, { method: "POST" })
     if(!res.ok) throw new Error("Failed to duplicate application")
     return res.json()
 }
