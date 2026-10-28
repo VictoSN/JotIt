@@ -13,8 +13,6 @@ function App() {
 
         <div>
           <ApplicationList />
-          <ApplicationList />
-          <ApplicationList />
         </div>
 
       </div>
