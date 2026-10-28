@@ -17,3 +17,14 @@ export async function getApplications(): Promise <Application[]> {
     if(!res.ok) throw new Error("Failed to fetch applications")
     return res.json()
 }
+
+export async function deleteApplication(id: string) {
+    const res = await fetch(`${BASE}/${id}`, { method: "DELETE" })
+    if(!res.ok) throw new Error("Failed to delete application")
+}
+
+export async function duplicateApplication(id: string) {
+    const res = await fetch(`${BASE}/${id}`, { method: "POST" })
+    if(!res.ok) throw new Error("Failed to duplicate application")
+    return res.json()
+}
