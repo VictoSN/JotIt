@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { createApplication } from "../api/application"
+import type { Application } from "../types"
 
 const WORK_TYPES = ["On-Site", "Hybrid", "Remote"] as const
 const EMPLOYMENT_TYPES = ["Full-Time", "Part-Time", "Internship", "Contract"] as const
@@ -23,7 +24,7 @@ function Select<T extends string>({ value, options, onChange }: SelectProps<T>) 
     )
 }
 
-function AddApplication() {
+function AddApplication({ onAdd }: { onAdd: (a: Application) => void }) {
     const [companyName, setCompanyName] = useState("")
     const [position, setPosition] = useState("")
     const [location, setLocation] = useState("")
@@ -46,9 +47,10 @@ function AddApplication() {
 
     async function handleSubmit() {
         try {
-            await createApplication({
+            const created = await createApplication({
                 companyName, position, location, workType, employmentType, expectedSalary: Number(expectedSalary), status, link,
             })
+            onAdd(created)
             clearInputs()
             console.log("Form sent")
         } catch (e) {
