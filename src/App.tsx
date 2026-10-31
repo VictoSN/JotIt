@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import AddApplication from "./components/AddApplication"
-import ApplicationList from "./components/applications/ApplicationList"
+import AddApplication from "./components/add/AddApplication"
+import ApplicationList from "./components/list/ApplicationList"
 import ApplicationStatistic from "./components/statistics/ApplicationStatistic"
 import SearchBar from "./components/SearchBar"
 import type { Application } from "./types"
@@ -40,11 +40,13 @@ function App() {
     <div className="flex flex-col">
       <SearchBar />
       <AddApplication onAdd={handleSubmit} />
-      <div className="flex flex-col">
+
+      <div className="flex flex-row">
         <ApplicationChart applications={applications} />
         <ApplicationStatistic applications={applications} />
-        <ApplicationList applications={applications} onDelete={handleDelete} onDuplicate={handleDuplicate} />
       </div>
+
+      <ApplicationList applications={applications} onDelete={handleDelete} onDuplicate={handleDuplicate} />
     </div>
   )
 }

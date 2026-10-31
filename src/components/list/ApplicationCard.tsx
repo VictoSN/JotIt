@@ -19,6 +19,7 @@ function ApplicationCard({ application, onDelete, onDuplicate }: {
                 <p>{link}</p>
             </div>
             <div>
+                <button className="cursor-pointer">Edit</button>
                 <button onClick={() => onDelete(_id)} className="cursor-pointer">Del</button>
                 <button onClick={() => onDuplicate(_id)} className="cursor-pointer">Dup</button>
             </div>

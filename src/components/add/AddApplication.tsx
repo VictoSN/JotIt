@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { createApplication } from "../api/application"
-import type { Application } from "../types"
+import { createApplication } from "../../api/application"
+import type { Application } from "../../types"
 
 const WORK_TYPES = ["On-Site", "Hybrid", "Remote"] as const
 const EMPLOYMENT_TYPES = ["Full-Time", "Part-Time", "Internship", "Contract"] as const
