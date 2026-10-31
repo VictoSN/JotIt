@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import type { Application } from "../types"
+import type { Application } from "../../types"
 
 function ApplicationStatistic({ applications }: { applications: Application[] }) {
     const [total, setTotal] = useState(0)
@@ -7,7 +7,6 @@ function ApplicationStatistic({ applications }: { applications: Application[] })
 
     useEffect(() => {
         let count = 0
-        let response = 0
         setTotal(applications.length)
 
         applications.map(a => {
@@ -16,7 +15,7 @@ function ApplicationStatistic({ applications }: { applications: Application[] })
             }
         })
 
-        response = Math.round(count / total * 100)
+        let response = Math.round(count / total * 100)
         setRespondPercentage(response)
     }, [applications])
 

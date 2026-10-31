@@ -1,4 +1,4 @@
-import type { Application } from "../types"
+import type { Application } from "../../types"
 
 function ApplicationCard({ application, onDelete, onDuplicate }: {
     application: Application

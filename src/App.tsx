@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import AddApplication from "./components/AddApplication"
-import ApplicationList from "./components/ApplicationList"
-import ApplicationStatistic from "./components/ApplicationStatistic"
+import ApplicationList from "./components/applications/ApplicationList"
+import ApplicationStatistic from "./components/statistics/ApplicationStatistic"
 import SearchBar from "./components/SearchBar"
 import type { Application } from "./types"
 import { deleteApplication, duplicateApplication, getApplications } from "./api/application"
+import ApplicationChart from "./components/statistics/ApplicationChart"
 
 function App() {
   const [applications, setApplications] = useState<Application[]>([])
@@ -40,6 +41,7 @@ function App() {
       <SearchBar />
       <AddApplication onAdd={handleSubmit} />
       <div className="flex flex-col">
+        <ApplicationChart applications={applications} />
         <ApplicationStatistic applications={applications} />
         <ApplicationList applications={applications} onDelete={handleDelete} onDuplicate={handleDuplicate} />
       </div>
