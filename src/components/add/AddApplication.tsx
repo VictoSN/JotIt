@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { createApplication } from "../../api/application"
+import { createApplication, editApplication } from "../../api/application"
 import type { Application } from "../../types"
 
 const WORK_TYPES = ["On-Site", "Hybrid", "Remote"] as const
@@ -10,7 +10,7 @@ type WorkType = typeof WORK_TYPES[number]
 type EmploymentType = typeof EMPLOYMENT_TYPES[number]
 type Status = typeof STATUSES[number]
 
-type SelectProps<T extends string> = {
+interface SelectProps<T extends string> {
     value: T
     options: readonly T[]
     onChange: (value: T) => void
@@ -24,15 +24,21 @@ function Select<T extends string>({ value, options, onChange }: SelectProps<T>) 
     )
 }
 
-function AddApplication({ onAdd }: { onAdd: (a: Application) => void }) {
-    const [companyName, setCompanyName] = useState("")
-    const [position, setPosition] = useState("")
-    const [location, setLocation] = useState("")
-    const [workType, setWorkType] = useState<WorkType>("On-Site")
-    const [employmentType, setEmploymentType] = useState<EmploymentType>("Full-Time")
-    const [expectedSalary, setExpectedSalary] = useState("")
-    const [status, setStatus] = useState<Status>("Applied")
-    const [link, setLink] = useState("")
+interface AddApplicationProps {
+    editing: Application | null
+    onAdd: (a: Application) => void
+    onUpdate: (a: Application) => void
+}
+
+function AddApplication({ editing, onAdd, onUpdate }: AddApplicationProps ) {
+    const [companyName, setCompanyName] = useState(editing?.companyName ?? "")
+    const [position, setPosition] = useState(editing?.position ?? "")
+    const [location, setLocation] = useState(editing?.location ?? "")
+    const [workType, setWorkType] = useState<WorkType>(editing?.workType ?? "On-Site")
+    const [employmentType, setEmploymentType] = useState<EmploymentType>(editing?.employmentType ?? "Full-Time")
+    const [expectedSalary, setExpectedSalary] = useState(editing?.expectedSalary ?? "")
+    const [status, setStatus] = useState<Status>(editing?.status ?? "Applied")
+    const [link, setLink] = useState(editing?.link ?? "")
 
     function clearInputs() {
         setCompanyName("")
@@ -46,11 +52,13 @@ function AddApplication({ onAdd }: { onAdd: (a: Application) => void }) {
     }
 
     async function handleSubmit() {
+        const data = {
+            companyName, position, location, workType, employmentType, expectedSalary: expectedSalary ? Number(expectedSalary) : undefined, status, link,
+        }
+
         try {
-            const created = await createApplication({
-                companyName, position, location, workType, employmentType, expectedSalary: Number(expectedSalary), status, link,
-            })
-            onAdd(created)
+            if (editing) onUpdate(await editApplication(editing._id, data))
+            else onAdd(await createApplication(data))
             clearInputs()
             console.log("Form sent")
         } catch (e) {
@@ -79,7 +87,7 @@ function AddApplication({ onAdd }: { onAdd: (a: Application) => void }) {
                 <input value={link} onChange={e => setLink(e.target.value)} placeholder="Link"></input>
             </div>
 
-            <button onClick={handleSubmit} className='cursor-pointer'>Submit</button>
+            <button onClick={handleSubmit} className='cursor-pointer'>{ editing ? "Save" : "Submit" }</button>
         </div>
     )
 }

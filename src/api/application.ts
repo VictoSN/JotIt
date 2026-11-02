@@ -18,6 +18,16 @@ export async function getApplications(): Promise <Application[]> {
     return res.json()
 }
 
+export async function editApplication(id: string, data: Partial<Application>): Promise <Application> {
+    const res = await fetch(`${BASE}/${id}`, { 
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+    })
+    if(!res.ok) throw new Error("Failed to edit application")
+    return res.json()
+}
+
 export async function deleteApplication(id: string) {
     const res = await fetch(`${BASE}/${id}`, { method: "DELETE" })
     if(!res.ok) throw new Error("Failed to delete application")

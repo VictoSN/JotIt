@@ -1,10 +1,13 @@
 import type { Application } from "../../types"
 
-function ApplicationCard({ application, onDelete, onDuplicate }: {
+interface ApplicationCardProps {
     application: Application
+    onEdit: (a: Application) => void
     onDelete: (id: string) => void
     onDuplicate: (id: string) => void
-}) {
+}
+
+function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: ApplicationCardProps) {
     const { _id, companyName, position, location, workType, employmentType, expectedSalary, status, link } = application
     return (
         <div className="flex w-[max] justify-between">
@@ -19,7 +22,7 @@ function ApplicationCard({ application, onDelete, onDuplicate }: {
                 <p>{link}</p>
             </div>
             <div>
-                <button>Edit</button>
+                <button onClick={() => onEdit(application)}>Edit</button>
                 <button onClick={() => onDelete(_id)}>Del</button>
                 <button onClick={() => onDuplicate(_id)}>Dup</button>
             </div>

@@ -9,6 +9,7 @@ import AddModal from "./components/add/AddModal"
 
 function App() {
   const [applications, setApplications] = useState<Application[]>([])
+  const [editing, setEditing] = useState<Application | null>(null)
 
   useEffect(() => {
       getApplications().then(setApplications).catch(console.error)
@@ -16,6 +17,10 @@ function App() {
 
   async function handleSubmit(created: Application) {
     setApplications(prev => [...prev, created])
+  }
+
+  async function handleUpdate(updated: Application) {
+    setApplications(prev => prev.map(a => a._id === updated._id ? updated : a))
   }
 
   async function handleDelete(id: string) {
@@ -39,14 +44,14 @@ function App() {
   return (
     <div className="flex flex-col">
       <SearchBar />
-      <AddModal onAdd={handleSubmit} />
+      <AddModal onAdd={handleSubmit} editing={editing} onUpdate={handleUpdate} onClose={() => setEditing(null)} />
 
       <div className="flex flex-row">
         <ApplicationChart applications={applications} />
         <ApplicationStatistic applications={applications} />
       </div>
 
-      <ApplicationList applications={applications} onDelete={handleDelete} onDuplicate={handleDuplicate} />
+      <ApplicationList applications={applications} onEdit={setEditing} onDelete={handleDelete} onDuplicate={handleDuplicate} />
     </div>
   )
 }

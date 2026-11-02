@@ -3,21 +3,25 @@ import type { Application } from "../../types"
 import AddApplication from "./AddApplication"
 
 interface AddModalProps {
+    editing: Application | null
     onAdd: (a: Application) => void
+    onUpdate: (a: Application) => void
+    onClose: () => void
 }
 
-function AddModal({ onAdd }: AddModalProps) {
+function AddModal({ editing, onAdd, onUpdate, onClose }: AddModalProps) {
     const [show, setShow] = useState(false)
+    const open = show || editing !== null
 
-    function handleAdd(a: Application) {
-        onAdd(a)
+    function done() {
         setShow(false)
+        onClose()
     }
 
     return(
         <div>
-            <button onClick={() => setShow(!show)}>+</button>
-            {show && <AddApplication onAdd={handleAdd} />}
+            <button onClick={() => (open ? done() : setShow(true))}>+</button>
+            {open && <AddApplication onAdd={a => { onAdd(a); done() }} editing={editing} onUpdate={a => { onUpdate(a); done() }} />}
         </div>
     )
 }

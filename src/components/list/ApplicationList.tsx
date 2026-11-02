@@ -1,16 +1,17 @@
 import type { Application } from "../../types"
 import ApplicationCard from "./ApplicationCard"
 
-type Props = {
+interface ApplicationListProps {
     applications: Application[]
+    onEdit: (a: Application) => void
     onDelete: (id: string) => void
     onDuplicate: (id: string) => void
 }
 
-function ApplicationList({ applications, onDelete, onDuplicate }: Props) {
+function ApplicationList({ applications, onEdit, onDelete, onDuplicate }: ApplicationListProps) {
     return (
         <div>
-            {applications.map(a => <ApplicationCard key={a._id} application={a} onDelete={onDelete} onDuplicate={onDuplicate} />)}
+            {applications.map(a => <ApplicationCard key={a._id} application={a} onEdit={onEdit} onDelete={onDelete} onDuplicate={onDuplicate} />)}
         </div>
     )
 }
