@@ -1,7 +1,12 @@
-function SearchBar() {
+interface SearchBarProps {
+    search: string
+    setSearch: (s: string) => void
+}
+
+function SearchBar({ search, setSearch }: SearchBarProps) {
     return (
         <div>
-            <input placeholder="Search"></input>
+            <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search"></input>
         </div>
     )
 }
