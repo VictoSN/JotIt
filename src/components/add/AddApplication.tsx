@@ -37,7 +37,7 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
     const [location, setLocation] = useState(editing?.location ?? "")
     const [workType, setWorkType] = useState<WorkType>(editing?.workType ?? "On-Site")
     const [employmentType, setEmploymentType] = useState<EmploymentType>(editing?.employmentType ?? "Full-Time")
-    const [expectedSalary, setExpectedSalary] = useState(editing?.expectedSalary ?? "")
+    const [expectedSalary, setExpectedSalary] = useState(String(editing?.expectedSalary ?? ""))
     const [status, setStatus] = useState<Status>(editing?.status ?? "Applied")
     const [link, setLink] = useState(editing?.link ?? "")
 
@@ -68,28 +68,30 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
     }
 
     return (
-        <div className="flex flex-col fixed">
-            <button onClick={() => onDone()}>X</button>
-            <div className="flex flex-col">
-                <input value={companyName} onChange={e => setCompanyName(e.target.value)} placeholder="Company Name"></input>
-                <input value={position} onChange={e => setPosition(e.target.value)} placeholder="Position"></input>
-                <input value={location} onChange={e => setLocation(e.target.value)} placeholder="Location"></input>
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center" onClick={onDone}>
+            <div className="flex flex-col bg-gray-200" onClick={e => e.stopPropagation()}>
+                <button onClick={() => onDone()}>X</button>
+                <div className="flex flex-col">
+                    <input value={companyName} onChange={e => setCompanyName(e.target.value)} placeholder="Company Name"></input>
+                    <input value={position} onChange={e => setPosition(e.target.value)} placeholder="Position"></input>
+                    <input value={location} onChange={e => setLocation(e.target.value)} placeholder="Location"></input>
 
-                {/* Work Type */}
-                <Select value={workType} options={WORK_TYPES} onChange={setWorkType} />
+                    {/* Work Type */}
+                    <Select value={workType} options={WORK_TYPES} onChange={setWorkType} />
 
-                {/* Employment Type */}
-                <Select value={employmentType} options={EMPLOYMENT_TYPES} onChange={setEmploymentType} />
+                    {/* Employment Type */}
+                    <Select value={employmentType} options={EMPLOYMENT_TYPES} onChange={setEmploymentType} />
 
-                <input type='number' value={expectedSalary} onChange={e =>  setExpectedSalary(e.target.value)} placeholder="Expected Salary"></input>
+                    <input type='number' value={expectedSalary} onChange={e =>  setExpectedSalary(e.target.value)} placeholder="Expected Salary"></input>
 
-                {/* Status */}
-                <Select value={status} options={STATUSES} onChange={setStatus} />
+                    {/* Status */}
+                    <Select value={status} options={STATUSES} onChange={setStatus} />
 
-                <input value={link} onChange={e => setLink(e.target.value)} placeholder="Link"></input>
+                    <input value={link} onChange={e => setLink(e.target.value)} placeholder="Link"></input>
+                </div>
+
+                <button onClick={handleSubmit} className='cursor-pointer'>{ editing ? "Save" : "Submit" }</button>
             </div>
-
-            <button onClick={handleSubmit} className='cursor-pointer'>{ editing ? "Save" : "Submit" }</button>
         </div>
     )
 }
