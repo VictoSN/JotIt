@@ -69,25 +69,27 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
 
     return (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center" onClick={onDone}>
-            <div className="flex flex-col bg-gray-200 p-4 rounded-lg" onClick={e => e.stopPropagation()}>
-                <button onClick={() => onDone()}>X</button>
-                <div className="flex flex-col">
-                    <input value={companyName} onChange={e => setCompanyName(e.target.value)} placeholder="Company Name"></input>
-                    <input value={position} onChange={e => setPosition(e.target.value)} placeholder="Position"></input>
-                    <input value={location} onChange={e => setLocation(e.target.value)} placeholder="Location"></input>
+            <div className="relative flex flex-col bg-gray-200 p-4 pt-8 rounded-lg" onClick={e => e.stopPropagation()}>
+                <button onClick={() => onDone()} className="absolute top-1 right-4">X</button>
+                <div className="grid grid-cols-2">
+                    <div className="flex flex-col">
+                        <input value={companyName} onChange={e => setCompanyName(e.target.value)} placeholder="Company Name"></input>
+                        <input value={position} onChange={e => setPosition(e.target.value)} placeholder="Position"></input>
+                        <input value={location} onChange={e => setLocation(e.target.value)} placeholder="Location"></input>
+                        
+                        {/* Work Type */}
+                        <Select value={workType} options={WORK_TYPES} onChange={setWorkType} />
+                    </div>
 
-                    {/* Work Type */}
-                    <Select value={workType} options={WORK_TYPES} onChange={setWorkType} />
+                    <div className="flex flex-col">
+                        {/* Employment Type */}
+                        <Select value={employmentType} options={EMPLOYMENT_TYPES} onChange={setEmploymentType} />
+                        <input type='number' value={expectedSalary} onChange={e =>  setExpectedSalary(e.target.value)} placeholder="Expected Salary"></input>
 
-                    {/* Employment Type */}
-                    <Select value={employmentType} options={EMPLOYMENT_TYPES} onChange={setEmploymentType} />
-
-                    <input type='number' value={expectedSalary} onChange={e =>  setExpectedSalary(e.target.value)} placeholder="Expected Salary"></input>
-
-                    {/* Status */}
-                    <Select value={status} options={STATUSES} onChange={setStatus} />
-
-                    <input value={link} onChange={e => setLink(e.target.value)} placeholder="Link"></input>
+                        {/* Status */}
+                        <Select value={status} options={STATUSES} onChange={setStatus} />
+                        <input value={link} onChange={e => setLink(e.target.value)} placeholder="Link"></input>
+                    </div>
                 </div>
 
                 <button onClick={handleSubmit} className='cursor-pointer'>{ editing ? "Save" : "Submit" }</button>
