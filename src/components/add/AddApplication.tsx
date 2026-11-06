@@ -69,7 +69,7 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
 
     return (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center" onClick={onDone}>
-            <div className="flex flex-col bg-gray-200" onClick={e => e.stopPropagation()}>
+            <div className="flex flex-col bg-gray-200 p-4 rounded-lg" onClick={e => e.stopPropagation()}>
                 <button onClick={() => onDone()}>X</button>
                 <div className="flex flex-col">
                     <input value={companyName} onChange={e => setCompanyName(e.target.value)} placeholder="Company Name"></input>
