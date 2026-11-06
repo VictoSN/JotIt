@@ -52,10 +52,12 @@ function App() {
       <SearchBar search={search} setSearch={setSearch} />
       <AddModal onAdd={handleSubmit} editing={editing} onUpdate={handleUpdate} onClose={() => setEditing(null)} />
 
-      <div className="flex flex-row">
-        <ApplicationChart applications={applications} />
-        <ApplicationStatistic applications={applications} />
-      </div>
+      {!search &&       
+        <div className="flex flex-row">
+          <ApplicationChart applications={applications} />
+          <ApplicationStatistic applications={applications} />
+        </div>
+      }
 
       <ApplicationList applications={filteredApplications} onEdit={setEditing} onDelete={handleDelete} onDuplicate={handleDuplicate} />
     </div>
