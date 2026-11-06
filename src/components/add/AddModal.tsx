@@ -20,7 +20,11 @@ function AddModal({ editing, onAdd, onUpdate, onClose }: AddModalProps) {
 
     return(
         <div>
-            <button onClick={() => (open ? done() : setShow(true))}>+</button>
+            {open ? 
+                <button onClick={() => done()}>X</button>
+                :
+                <button onClick={() => setShow(true)}>+</button> 
+            }
             {open && <AddApplication onAdd={a => { onAdd(a); done() }} editing={editing} onUpdate={a => { onUpdate(a); done() }} />}
         </div>
     )
