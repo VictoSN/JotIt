@@ -6,17 +6,11 @@ function ApplicationStatistic({ applications }: { applications: Application[] })
     const [respondPercentage, setRespondPercentage] = useState(0)
 
     useEffect(() => {
-        let count = 0
-        setTotal(applications.length)
-
-        applications.map(a => {
-            if (a.status !== "Applied") {
-                count++
-            }
-        })
-
-        let response = Math.round(count / total * 100)
-        setRespondPercentage(response)
+        const total = applications.length
+        const responded = applications.filter(a => a.status !== "Applied").length
+        const responseRate = total > 0 ? Math.round((responded / total) * 100) : 0
+        setTotal(total)
+        setRespondPercentage(responseRate)
     }, [applications])
 
     return(
