@@ -48,7 +48,7 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col justify-center items-center gap-4">
       <SearchBar search={search} setSearch={setSearch} />
       <AddModal onAdd={handleSubmit} editing={editing} onUpdate={handleUpdate} onClose={() => setEditing(null)} />
 
