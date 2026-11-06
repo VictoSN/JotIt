@@ -20,9 +20,13 @@ function ApplicationStatistic({ applications }: { applications: Application[] })
     }, [applications])
 
     return(
-        <div>
-            {total}
-            {respondPercentage}%
+        <div className="flex flex-col gap-4">
+            <div className="flex bg-gray-200 px-4 py-2 rounded">
+                {total}
+            </div>
+            <div className="flex bg-gray-200 px-4 py-2 rounded">
+                {respondPercentage}%
+            </div>
         </div>
     )
 }
