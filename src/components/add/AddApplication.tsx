@@ -28,9 +28,10 @@ interface AddApplicationProps {
     editing: Application | null
     onAdd: (a: Application) => void
     onUpdate: (a: Application) => void
+    onDone: () => void
 }
 
-function AddApplication({ editing, onAdd, onUpdate }: AddApplicationProps ) {
+function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProps ) {
     const [companyName, setCompanyName] = useState(editing?.companyName ?? "")
     const [position, setPosition] = useState(editing?.position ?? "")
     const [location, setLocation] = useState(editing?.location ?? "")
@@ -67,7 +68,8 @@ function AddApplication({ editing, onAdd, onUpdate }: AddApplicationProps ) {
     }
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col fixed">
+            <button onClick={() => onDone()}>X</button>
             <div className="flex flex-col">
                 <input value={companyName} onChange={e => setCompanyName(e.target.value)} placeholder="Company Name"></input>
                 <input value={position} onChange={e => setPosition(e.target.value)} placeholder="Position"></input>
