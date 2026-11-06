@@ -11,20 +11,24 @@ function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: Applica
     const { _id, companyName, position, location, workType, employmentType, expectedSalary, status, link } = application
     return (
         <div className="flex w-[max] justify-between">
-            <div className="flex">
-                <h1>{companyName}</h1>
-                <p>{position}</p>
-                <p>{location}</p>
-                <p>{workType}</p>
-                <p>{employmentType}</p>
-                <p>{expectedSalary}</p>
-                <p>{status}</p>
-                <p>{link}</p>
+            <div className="">
+                <div className="flex flex-row">
+                    <h1>{companyName}</h1>
+                    <p>{position}</p>
+                </div>
+                <div className="flex flex-row">
+                    <p>{location}</p>
+                    <p>{workType}</p>
+                    <p>{employmentType}</p>
+                    <p>{expectedSalary}</p>
+                    <p>{status}</p>
+                    <a href={link} target="_blank" rel="noopener noreferrer">Link</a>
+                </div>
             </div>
-            <div>
-                <button onClick={() => onEdit(application)}>Edit</button>
-                <button onClick={() => onDelete(_id)}>Del</button>
-                <button onClick={() => onDuplicate(_id)}>Dup</button>
+            <div className="flex flex-row gap-2">
+                <button onClick={() => onEdit(application)} className="bg-gray-200 p-1 rounded-sm">Edit</button>
+                <button onClick={() => onDelete(_id)} className="bg-gray-200 p-1 rounded-sm">Del</button>
+                <button onClick={() => onDuplicate(_id)} className="bg-gray-200 p-1 rounded-sm">Dup</button>
             </div>
         </div>
     )
