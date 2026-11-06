@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+button {
+    transition: transform 0.3s ease;
+}
+
 button:hover {
-    cursor: pointer
+    cursor: pointer;
+    filter: brightness(98%);
+    transform: scale(1.05);
 }
