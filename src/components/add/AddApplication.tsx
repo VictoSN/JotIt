@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { createApplication, editApplication } from "../../api/application"
 import type { Application } from "../../types"
+import closeIcon from "../../assets/close.svg";
 
 const WORK_TYPES = ["On-Site", "Hybrid", "Remote"] as const
 const EMPLOYMENT_TYPES = ["Full-Time", "Part-Time", "Internship", "Contract"] as const
@@ -80,7 +81,9 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
                     </div>
                 )}
 
-                <button onClick={() => onDone()} className="absolute top-2 right-4">X</button>
+                <button onClick={() => onDone()} className="absolute top-2 right-4">
+                    <img src={closeIcon} className="w-4 h-4"/>
+                </button>
 
                 <div className="grid grid-cols-2">
                     <div className="flex flex-col">

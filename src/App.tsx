@@ -64,7 +64,7 @@ function App() {
         {applications.length > 0 ? (
           <main className="flex flex-col gap-4">
             {!search && (
-              <div>
+              <div className="flex flex-col">
                 <h1>Statistics</h1>
                 <div className="flex flex-row">
                   <ApplicationChart applications={applications} />

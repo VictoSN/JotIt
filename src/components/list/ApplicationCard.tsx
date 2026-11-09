@@ -1,4 +1,9 @@
 import type { Application } from "../../types"
+import locationIcon from "../../assets/location.svg";
+import editIcon from "../../assets/edit.svg";
+import duplicateIcon from "../../assets/duplicate.svg";
+import deleteIcon from "../../assets/delete.svg";
+import linkOutIcon from "../../assets/linkOut.svg";
 
 interface ApplicationCardProps {
     application: Application
@@ -18,17 +23,34 @@ function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: Applica
                 </div>
                 <p>{position}</p>
                 <div className="flex flex-row gap-2">
-                    <p>{location}</p>
+                    {location && 
+                        <div className="flex flex-row items-center">
+                            <img src={locationIcon} className="w-[24px] h-[24px]"/>
+                            {location}
+                        </div>
+                    }
                     <p>{workType}</p>
                     <p>{employmentType}</p>
                     <p>${expectedSalary}</p>
-                    {link && <a href={link} target="_blank" rel="noopener noreferrer">Link</a>}
+                    {link && 
+                        <div className="flex flex-row items-center gap-1">
+                            <a href={link} target="_blank" rel="noopener noreferrer">Link</a>
+                            <img src={linkOutIcon} className="w-4 h-4"/>
+                        </div>
+                    }
                 </div>
             </div>
+
             <div className="flex flex-row gap-2">
-                <button onClick={() => onEdit(application)} className="bg-gray-200 p-1 rounded-sm">Edit</button>
-                <button onClick={() => onDuplicate(_id)} className="bg-gray-200 p-1 rounded-sm">Dup</button>
-                <button onClick={() => onDelete(_id)} className="bg-gray-200 p-1 rounded-sm">Del</button>
+                <button onClick={() => onEdit(application)} className="bg-gray-200 p-1 rounded-sm" title="Edit">
+                    <img src={editIcon} className="w-4 h-4"/>
+                </button>
+                <button onClick={() => onDuplicate(_id)} className="bg-gray-200 p-1 rounded-sm" title="Duplicate">
+                    <img src={duplicateIcon} className="w-4 h-4"/>
+                </button>
+                <button onClick={() => onDelete(_id)} className="bg-gray-200 p-1 rounded-sm" title="Delete">
+                    <img src={deleteIcon} className="w-4 h-4"/>
+                </button>
             </div>
         </div>
     )
