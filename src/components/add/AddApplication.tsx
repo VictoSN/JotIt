@@ -62,7 +62,6 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
             if (editing) onUpdate(await editApplication(editing._id, data))
             else onAdd(await createApplication(data))
             clearInputs()
-            console.log("Form sent")
         } catch (e) {
             console.error(e)
         }
@@ -82,7 +81,7 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
                 )}
 
                 <button onClick={() => onDone()} className="absolute top-2 right-4">
-                    <img src={closeIcon} className="w-4 h-4"/>
+                    <img src={closeIcon} alt="Close" className="w-4 h-4"/>
                 </button>
 
                 <div className="grid grid-cols-2">

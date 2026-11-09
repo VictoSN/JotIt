@@ -53,7 +53,7 @@ function App() {
         <header className="flex w-full flex-row justify-between">
           <div className="flex flex-row gap-2">
             <a href="https://github.com/VictoSN" target="_blank" rel="noopener noreferrer">
-              <img src="/public/logo-circle.png" className="w-[30px] h-[30px]"/>
+              <img src="/logo-circle.png" alt="Logo" className="w-[30px] h-[30px]"/>
             </a>
             <h1>JotIt</h1>
           </div>

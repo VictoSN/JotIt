@@ -15,7 +15,7 @@ interface ApplicationCardProps {
 function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: ApplicationCardProps) {
     const { _id, companyName, position, location, workType, employmentType, expectedSalary, status, link } = application
     return (
-        <div className="flex w-[max] justify-between border-solid border-1 py-2 px-4 rounded-lg">
+        <div className="flex w-full justify-between border-solid border-1 py-2 px-4 rounded-lg">
             <div className="flex flex-col">
                 <div className="flex flex-row gap-2">
                     <h1>{companyName}</h1>
@@ -25,7 +25,7 @@ function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: Applica
                 <div className="flex flex-row gap-2">
                     {location && 
                         <div className="flex flex-row items-center">
-                            <img src={locationIcon} className="w-[24px] h-[24px]"/>
+                            <img src={locationIcon} alt="Location" className="w-[24px] h-[24px]"/>
                             {location}
                         </div>
                     }
@@ -35,7 +35,7 @@ function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: Applica
                     {link && 
                         <div className="flex flex-row items-center gap-1">
                             <a href={link} target="_blank" rel="noopener noreferrer">Link</a>
-                            <img src={linkOutIcon} className="w-4 h-4"/>
+                            <img src={linkOutIcon} alt="Link" className="w-4 h-4"/>
                         </div>
                     }
                 </div>
@@ -43,13 +43,13 @@ function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: Applica
 
             <div className="flex flex-row gap-2">
                 <button onClick={() => onEdit(application)} className="bg-gray-200 p-1 rounded-sm" title="Edit">
-                    <img src={editIcon} className="w-4 h-4"/>
+                    <img src={editIcon} alt="Edit" className="w-4 h-4"/>
                 </button>
                 <button onClick={() => onDuplicate(_id)} className="bg-gray-200 p-1 rounded-sm" title="Duplicate">
-                    <img src={duplicateIcon} className="w-4 h-4"/>
+                    <img src={duplicateIcon} alt="Duplicate" className="w-4 h-4"/>
                 </button>
                 <button onClick={() => onDelete(_id)} className="bg-gray-200 p-1 rounded-sm" title="Delete">
-                    <img src={deleteIcon} className="w-4 h-4"/>
+                    <img src={deleteIcon} alt="Delete" className="w-4 h-4"/>
                 </button>
             </div>
         </div>
