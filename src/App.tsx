@@ -52,17 +52,29 @@ function App() {
       <SearchBar search={search} setSearch={setSearch} />
       <AddModal onAdd={handleSubmit} editing={editing} onUpdate={handleUpdate} onClose={() => setEditing(null)} />
 
-      {!search &&       
-        <div className="flex flex-row">
-          <ApplicationChart applications={applications} />
-          <ApplicationStatistic applications={applications} />
-        </div>
-      }
+      {applications.length > 0 ? (
+        <div>
+          {!search && (
+            <div className="flex flex-row">
+              <ApplicationChart applications={applications} />
+              <ApplicationStatistic applications={applications} />
+            </div>
+          )}
 
-      <div>
-        {search && <p>Searching for {search}</p>}
-        <ApplicationList applications={filteredApplications} onEdit={setEditing} onDelete={handleDelete} onDuplicate={handleDuplicate} />
-      </div>
+          <div>
+            {search && filteredApplications.length === 0 ? (
+              <p>No results for "{search}"</p>
+            ) : (
+              <div>
+                {search && <p>Searching for "{search}"</p>}
+                <ApplicationList applications={filteredApplications} onEdit={setEditing} onDelete={handleDelete} onDuplicate={handleDuplicate} />
+              </div>
+            )}
+          </div>
+        </div>
+        ) : (
+          <p>Applications not found</p>
+      )}
     </div>
   )
 }
