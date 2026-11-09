@@ -59,7 +59,10 @@ function App() {
         </div>
       }
 
-      <ApplicationList applications={filteredApplications} onEdit={setEditing} onDelete={handleDelete} onDuplicate={handleDuplicate} />
+      <div>
+        {search && <p>Searching for {search}</p>}
+        <ApplicationList applications={filteredApplications} onEdit={setEditing} onDelete={handleDelete} onDuplicate={handleDuplicate} />
+      </div>
     </div>
   )
 }
