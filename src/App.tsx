@@ -48,37 +48,49 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center gap-4">
-      <SearchBar search={search} setSearch={setSearch} />
-      <AddModal onAdd={handleSubmit} editing={editing} onUpdate={handleUpdate} onClose={() => setEditing(null)} />
+    <div className="min-h-dvh bg-slate-50 text-slate-900">
+      <div className="mx-auto w-full max-w-6xl px-5 py-8 sm:px-8">
+        <header className="flex w-full flex-row justify-between">
+          <div className="flex flex-row gap-2">
+            <a href="https://github.com/VictoSN" target="_blank" rel="noopener noreferrer">
+              <img src="/public/logo-circle.png" className="w-[30px] h-[30px]"/>
+            </a>
+            <h1>JotIt</h1>
+          </div>
 
-      {applications.length > 0 ? (
-        <div className="flex flex-col gap-4">
-          {!search && (
-            <div>
-              <h1>Statistics</h1>
-              <div className="flex flex-row">
-                <ApplicationChart applications={applications} />
-                <ApplicationStatistic applications={applications} />
-              </div>
-            </div>
-          )}
+          <SearchBar search={search} setSearch={setSearch} />
+        </header>
 
-          <h1>Applications</h1>
-          <div>
-            {search && filteredApplications.length === 0 ? (
-              <p>No results for "{search}"</p>
-            ) : (
+        {applications.length > 0 ? (
+          <main className="flex flex-col gap-4">
+            {!search && (
               <div>
-                {search && <p>Searching for "{search}"</p>}
-                <ApplicationList applications={filteredApplications} onEdit={setEditing} onDelete={handleDelete} onDuplicate={handleDuplicate} />
+                <h1>Statistics</h1>
+                <div className="flex flex-row">
+                  <ApplicationChart applications={applications} />
+                  <ApplicationStatistic applications={applications} />
+                </div>
               </div>
             )}
-          </div>
-        </div>
-        ) : (
-          <p>Applications not found</p>
-      )}
+
+            <h1>Applications</h1>
+            <div>
+              {search && filteredApplications.length === 0 ? (
+                <p>No results for "{search}"</p>
+              ) : (
+                <div>
+                  {search && <p>Searching for "{search}"</p>}
+                  <ApplicationList applications={filteredApplications} onEdit={setEditing} onDelete={handleDelete} onDuplicate={handleDuplicate} />
+                </div>
+              )}
+            </div>
+          </main>
+          ) : (
+            <p>Applications not found</p>
+        )}
+
+        <AddModal onAdd={handleSubmit} editing={editing} onUpdate={handleUpdate} onClose={() => setEditing(null)} />
+      </div>
     </div>
   )
 }
