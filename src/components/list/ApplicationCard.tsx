@@ -22,7 +22,7 @@ function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: Applica
                     <p>{employmentType}</p>
                     <p>{expectedSalary}</p>
                     <p>{status}</p>
-                    <a href={link} target="_blank" rel="noopener noreferrer">Link</a>
+                    {link && <a href={link} target="_blank" rel="noopener noreferrer">Link</a>}
                 </div>
             </div>
             <div className="flex flex-row gap-2">
