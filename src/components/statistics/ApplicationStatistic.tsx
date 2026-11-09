@@ -9,16 +9,20 @@ function ApplicationStatistic({ applications }: { applications: Application[] })
 
     return(
         <div className="grid grid-cols-2 gap-4">
-            <div className="flex bg-gray-200 px-4 py-2 rounded">
+            <div className="flex flex-col bg-gray-200 px-4 py-2 rounded">
+                <p>Total Tracked</p>
                 {total}
             </div>
-            <div className="flex bg-gray-200 px-4 py-2 rounded">
+            <div className="flex flex-col bg-gray-200 px-4 py-2 rounded">
+                <p>Interviews</p>
                 {interview}
             </div>
-            <div className="flex bg-gray-200 px-4 py-2 rounded">
+            <div className="flex flex-col bg-gray-200 px-4 py-2 rounded">
+                <p>Response Rate</p>
                 {responseRate}%
             </div>
-            <div className="flex bg-gray-200 px-4 py-2 rounded">
+            <div className="flex flex-col bg-gray-200 px-4 py-2 rounded">
+                <p>Offers</p>
                 {offer}
             </div>
         </div>

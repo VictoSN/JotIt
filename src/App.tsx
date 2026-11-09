@@ -53,14 +53,18 @@ function App() {
       <AddModal onAdd={handleSubmit} editing={editing} onUpdate={handleUpdate} onClose={() => setEditing(null)} />
 
       {applications.length > 0 ? (
-        <div>
+        <div className="flex flex-col gap-4">
           {!search && (
-            <div className="flex flex-row">
-              <ApplicationChart applications={applications} />
-              <ApplicationStatistic applications={applications} />
+            <div>
+              <h1>Statistics</h1>
+              <div className="flex flex-row">
+                <ApplicationChart applications={applications} />
+                <ApplicationStatistic applications={applications} />
+              </div>
             </div>
           )}
 
+          <h1>Applications</h1>
           <div>
             {search && filteredApplications.length === 0 ? (
               <p>No results for "{search}"</p>
