@@ -51,7 +51,7 @@ function App() {
   return (
     <div className="min-h-dvh">
       <div className="mx-auto w-full max-w-6xl px-5 py-8 sm:px-8">
-        <header className="flex w-full flex-row justify-between mb-8">
+        <header className="flex w-full flex-row justify-between mb-8 items-center">
           <div className="flex flex-row gap-2">
             <a href="https://github.com/VictoSN" target="_blank" rel="noopener noreferrer">
               <img src="/logo-circle.png" alt="Logo" className="w-[30px] h-[30px]"/>
@@ -67,7 +67,7 @@ function App() {
             {!search && (
               <div className="flex flex-col mb-4">
                 <h1 className="title">Statistics</h1>
-                <div className="flex flex-col sm:flex-row items-center gap-8 mx-32">
+                <div className="flex flex-col sm:flex-row items-center gap-8 lg:mx-32">
                   <div className="w-44 shrink-0">
                     <ApplicationChart applications={applications} />
                   </div>

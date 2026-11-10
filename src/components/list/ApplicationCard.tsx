@@ -43,10 +43,10 @@ function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: Applica
                         <p>${expectedSalary.toLocaleString()}</p>
                     }
                     {link && 
-                        <div className="flex flex-row items-center gap-1 border-b border-transparent hover:border-b-[#4e4e4e]">
-                            <a href={link} target="_blank" rel="noopener noreferrer">Link</a>
+                        <a href={link} target="_blank" rel="noopener noreferrer" className="flex flex-row gap-1 border-b border-transparent hover:border-b-[#4e4e4e]">
+                            <p>Link</p>
                             <img src={linkOutIcon} alt="Link" className="icon-size opacity-60"/>
-                        </div>
+                        </a>
                     }
                 </div>
             </div>
@@ -58,7 +58,7 @@ function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: Applica
                 <button onClick={() => onDuplicate(_id)} className="list-button" title="Duplicate">
                     <img src={duplicateIcon} alt="Duplicate" className="icon-size"/>
                 </button>
-                <button onClick={() => onDelete(_id)} className="list-button" title="Delete">
+                <button onClick={() => onDelete(_id)} className="list-button hover:bg-red-500" title="Delete">
                     <img src={deleteIcon} alt="Delete" className="icon-size"/>
                 </button>
             </div>

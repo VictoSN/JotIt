@@ -8,7 +8,7 @@ interface SearchBarProps {
 
 function SearchBar({ search, setSearch }: SearchBarProps) {
     return (
-        <div className="flex flex-row bg-[#303030] rounded-lg p-2 px-3 gap-2 items-center focus-within:border-[#6e6e6e]">
+        <div className="flex flex-row bg-[#303030] rounded-lg p-1.5 sm:p-2 px-2 sm:px-3 gap-2 items-center focus-within:border-[#6e6e6e]">
             <img src={searchIcon} alt="Search" className="icon-size opacity-60"/>
             <input
                 className="outline-none"

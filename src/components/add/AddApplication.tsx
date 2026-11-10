@@ -84,7 +84,7 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
                     <img src={closeIcon} alt="Close" className="icon-size"/>
                 </button>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-4">
                         <div className="modal-input-div">
                             <div className="flex items-center gap-1">
