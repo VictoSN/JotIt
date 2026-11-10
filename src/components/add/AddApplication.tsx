@@ -19,7 +19,7 @@ interface SelectProps<T extends string> {
 
 function Select<T extends string>({ value, options, onChange }: SelectProps<T>) {
     return (
-        <select value={value} onChange={e => onChange(e.target.value as T)}>
+        <select className="modal-input" value={value} onChange={e => onChange(e.target.value as T)}>
             {options.map(o => <option key={o} value={o}>{o}</option>)}
         </select>
     )
@@ -69,73 +69,73 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
 
     return (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center" onClick={onDone}>
-            <div className="relative flex flex-col bg-gray-200 p-4 rounded-lg" onClick={e => e.stopPropagation()}>
+            <div className="relative flex flex-col bg-[#303030] p-4 gap-2 rounded-lg" onClick={e => e.stopPropagation()}>
                 {!editing ? (
                     <div>
-                        <h1>New Application</h1>
+                        <h1 className="font-semibold">New Application</h1>
                     </div>
                     ) : (
                     <div>
-                        <h1>Edit Application</h1>
+                        <h1 className="font-semibold">Edit Application</h1>
                     </div>
                 )}
 
-                <button onClick={() => onDone()} className="absolute top-2 right-4">
+                <button onClick={() => onDone()} className="absolute top-4 right-4">
                     <img src={closeIcon} alt="Close" className="w-4 h-4"/>
                 </button>
 
-                <div className="grid grid-cols-2">
-                    <div className="flex flex-col">
-                        <div className="flex flex-col">
-                            <h2>Company Name</h2>
-                            <input value={companyName} onChange={e => setCompanyName(e.target.value)} placeholder="e.g. Google"></input>
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-4">
+                        <div className="modal-input-div">
+                            <h2 className="modal-input-header">Company Name</h2>
+                            <input className="modal-input" value={companyName} onChange={e => setCompanyName(e.target.value)} placeholder="e.g. Google"></input>
                         </div>
 
-                        <div className="flex flex-col">
-                            <h2>Location</h2>
-                            <input value={location} onChange={e => setLocation(e.target.value)} placeholder="e.g. Singapore"></input>
+                        <div className="modal-input-div">
+                            <h2 className="modal-input-header">Location</h2>
+                            <input className="modal-input" value={location} onChange={e => setLocation(e.target.value)} placeholder="e.g. Singapore"></input>
                         </div>
 
-                        <div className="flex flex-col">
-                            <h2>Work Type</h2>
+                        <div className="modal-input-div">
+                            <h2 className="modal-input-header">Work Type</h2>
                             <Select value={workType} options={WORK_TYPES} onChange={setWorkType} />
                         </div>
 
-                        <div className="flex flex-col">
-                            <h2>Status</h2>
+                        <div className="modal-input-div">
+                            <h2 className="modal-input-header">Status</h2>
                             <Select value={status} options={STATUSES} onChange={setStatus} />
                         </div>
                     </div>
 
-                    <div className="flex flex-col">
-                        <div className="flex flex-col">
-                            <h2>Position</h2>
-                            <input value={position} onChange={e => setPosition(e.target.value)} placeholder="e.g. Software Developer"></input>
+                    <div className="flex flex-col gap-4">
+                        <div className="modal-input-div">
+                            <h2 className="modal-input-header">Position</h2>
+                            <input className="modal-input" value={position} onChange={e => setPosition(e.target.value)} placeholder="e.g. Software Developer"></input>
                         </div>
 
-                        <div className="flex flex-col">
-                            <h2>Expected Salary</h2>
-                            <div className="flex flex-row">
+                        <div className="modal-input-div">
+                            <h2 className="modal-input-header">Expected Salary</h2>
+                            <div className="flex flex-row modal-input gap-1">
                                 <p>$</p>
-                                <input type='number' value={expectedSalary} onChange={e =>  setExpectedSalary(e.target.value)} placeholder="90000"></input>
+                                <input type='number' min="0" step="1" value={expectedSalary} onChange={e =>  setExpectedSalary(e.target.value)} placeholder="90000"></input>
                             </div>
                         </div>
 
-                        <div className="flex flex-col">
-                            <h2>Employment Type</h2>
+                        <div className="modal-input-div">
+                            <h2 className="modal-input-header">Employment Type</h2>
                             <Select value={employmentType} options={EMPLOYMENT_TYPES} onChange={setEmploymentType} />
                         </div>
 
-                        <div className="flex flex-col">
-                            <h2>Job Posting Link</h2>
-                            <input value={link} onChange={e => setLink(e.target.value)} placeholder="https://google.com/jobs/software-developer"></input>
+                        <div className="modal-input-div">
+                            <h2 className="modal-input-header">Job Posting Link</h2>
+                            <input className="modal-input" value={link} onChange={e => setLink(e.target.value)} placeholder="https://google.com/jobs/software-developer"></input>
                         </div>
                     </div>
                 </div>
 
-                <div className="flex flex-row gap-2 justify-end">                    
+                <div className="flex flex-row gap-4 justify-end border-t border-solid border-[#6e6e6e] pt-2">                    
                     <button onClick={onDone}>Cancel</button>
-                    <button onClick={handleSubmit} className='cursor-pointer'>{ editing ? "Save Application" : "Add Application" }</button>
+                    <button onClick={handleSubmit} className='cursor-pointer bg-[#efefef] text-[#303030] py-1 px-2 rounded-md'>{ editing ? "Save" : "Add" }</button>
                 </div>
             </div>
         </div>

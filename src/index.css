@@ -9,3 +9,21 @@ button:hover {
     filter: brightness(98%);
     transform: scale(1.05);
 }
+
+@layer components {
+    .modal-input-div {
+        @apply flex flex-col gap-1;
+    }
+
+    .modal-input-header {
+        @apply text-sm;
+    }
+
+    .modal-input {
+        @apply border-[0.5px] border-solid border-[#4e4e4e] rounded-md px-2 py-1 bg-[#3b3b3b];
+    }
+
+    .modal-input:hover {
+        @apply border-1 border-[#6e6e6e];
+    }
+}
