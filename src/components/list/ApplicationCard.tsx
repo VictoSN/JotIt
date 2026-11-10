@@ -15,7 +15,7 @@ interface ApplicationCardProps {
 function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: ApplicationCardProps) {
     const { _id, companyName, position, location, workType, employmentType, expectedSalary, status, link } = application
     return (
-        <div className="bg-div flex w-full justify-between py-2 px-4 rounded-lg bg-[#1c1c1c]">
+        <div className="bg-div flex w-full justify-between p-4 rounded-lg bg-[#222222] hover:bg-[#242424] border-0">
             <div className="flex flex-col">
                 <div className="flex flex-row gap-2">
                     <h1>{companyName}</h1>

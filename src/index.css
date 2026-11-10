@@ -11,8 +11,7 @@ button {
 
 button:hover {
     cursor: pointer;
-    filter: brightness(98%);
-    transform: scale(1.05);
+    filter: brightness(110%);
 }
 
 @layer components {
@@ -33,7 +32,11 @@ button:hover {
     }
 
     .list-button {
-        @apply bg-[#303030] p-2 rounded-sm;
+        @apply p-2 rounded-sm;
+    }
+
+    .list-button:hover {
+        @apply bg-[#303030];
     }
 
     .modal-input-div {

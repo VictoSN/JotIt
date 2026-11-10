@@ -8,20 +8,20 @@ function ApplicationStatistic({ applications }: { applications: Application[] })
     const responseRate = total > 0 ? Math.round((responded / total) * 100) : 0
 
     return(
-        <div className="grid grid-cols-2 gap-4">
-            <div className="bg-div statistics-div">
+        <div className="grid grid-cols-2 gap-4 w-full">
+            <div className="statistics-div">
                 <p>Total Tracked</p>
                 {total}
             </div>
-            <div className="bg-div statistics-div">
+            <div className="statistics-div">
                 <p>Interviews</p>
                 {interview}
             </div>
-            <div className="bg-div statistics-div">
+            <div className="statistics-div">
                 <p>Response Rate</p>
                 {responseRate}%
             </div>
-            <div className=" bg-div statistics-div">
+            <div className="statistics-div">
                 <p>Offers</p>
                 {offer}
             </div>

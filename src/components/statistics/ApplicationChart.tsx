@@ -5,6 +5,7 @@ import { Chart as ChartJs, ArcElement, Tooltip, Legend } from "chart.js"
 ChartJs.register(ArcElement, Tooltip, Legend)
 
 const STATUSES = ["Applied", "Interview", "Offer", "Rejected"] as const
+const COLOURS = []
 
 function ApplicationChart({ applications }: { applications: Application[] }) {
     const counts = STATUSES.map(s => applications.filter(a => a.status === s).length )
