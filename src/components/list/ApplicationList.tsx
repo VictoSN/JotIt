@@ -10,7 +10,7 @@ interface ApplicationListProps {
 
 function ApplicationList({ applications, onEdit, onDelete, onDuplicate }: ApplicationListProps) {
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
             {applications.map(a => <ApplicationCard key={a._id} application={a} onEdit={onEdit} onDelete={onDelete} onDuplicate={onDuplicate} />)}
         </div>
     )

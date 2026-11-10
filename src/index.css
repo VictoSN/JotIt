@@ -21,11 +21,19 @@ button:hover {
     }
 
     .bg-div:hover {
-        @apply border-1 border-[#6e6e6e];
+        @apply border-[#6e6e6e];
+    }
+
+    .icon-size {
+        @apply w-4 h-4;
     }
 
     .statistics-div {
         @apply flex flex-col px-4 py-2 rounded items-start justify-center;
+    }
+
+    .list-button {
+        @apply bg-[#303030] p-2 rounded-sm;
     }
 
     .modal-input-div {

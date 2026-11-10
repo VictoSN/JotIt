@@ -80,8 +80,8 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
                     </div>
                 )}
 
-                <button onClick={() => onDone()} className="absolute top-4 right-4">
-                    <img src={closeIcon} alt="Close" className="w-4 h-4"/>
+                <button onClick={() => onDone()} className="absolute top-4 right-4" title="Close">
+                    <img src={closeIcon} alt="Close" className="icon-size"/>
                 </button>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -134,8 +134,8 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
                 </div>
 
                 <div className="flex flex-row gap-4 justify-end border-t border-solid border-[#6e6e6e] pt-2">                    
-                    <button onClick={onDone}>Cancel</button>
-                    <button onClick={handleSubmit} className='cursor-pointer bg-[#efefef] text-[#303030] py-1 px-2 rounded-md'>{ editing ? "Save" : "Add" }</button>
+                    <button onClick={onDone} title="Cancel">Cancel</button>
+                    <button onClick={handleSubmit} className='cursor-pointer bg-[#efefef] text-[#303030] py-1 px-2 rounded-md' title={editing ? "Save" : "Add"}>{ editing ? "Save" : "Add" }</button>
                 </div>
             </div>
         </div>

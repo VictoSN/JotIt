@@ -35,23 +35,23 @@ function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: Applica
                         <p>${expectedSalary}</p>
                     }
                     {link && 
-                        <div className="flex flex-row items-center gap-1">
+                        <div className="flex flex-row items-center gap-1 border-b border-transparent hover:border-b-[#4e4e4e]">
                             <a href={link} target="_blank" rel="noopener noreferrer">Link</a>
-                            <img src={linkOutIcon} alt="Link" className="w-4 h-4"/>
+                            <img src={linkOutIcon} alt="Link" className="icon-size"/>
                         </div>
                     }
                 </div>
             </div>
 
-            <div className="flex flex-row gap-2">
-                <button onClick={() => onEdit(application)} className="bg-gray-200 p-1 rounded-sm" title="Edit">
-                    <img src={editIcon} alt="Edit" className="w-4 h-4"/>
+            <div className="flex flex-row gap-2 h-fit">
+                <button onClick={() => onEdit(application)} className="list-button" title="Edit">
+                    <img src={editIcon} alt="Edit" className="icon-size"/>
                 </button>
-                <button onClick={() => onDuplicate(_id)} className="bg-gray-200 p-1 rounded-sm" title="Duplicate">
-                    <img src={duplicateIcon} alt="Duplicate" className="w-4 h-4"/>
+                <button onClick={() => onDuplicate(_id)} className="list-button" title="Duplicate">
+                    <img src={duplicateIcon} alt="Duplicate" className="icon-size"/>
                 </button>
-                <button onClick={() => onDelete(_id)} className="bg-gray-200 p-1 rounded-sm" title="Delete">
-                    <img src={deleteIcon} alt="Delete" className="w-4 h-4"/>
+                <button onClick={() => onDelete(_id)} className="list-button" title="Delete">
+                    <img src={deleteIcon} alt="Delete" className="icon-size"/>
                 </button>
             </div>
         </div>
