@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState, type FormEvent } from "react"
 import { createApplication, editApplication } from "../../api/application"
 import type { Application } from "../../types"
 import closeIcon from "../../assets/close.svg";
@@ -53,32 +53,43 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
         setLink("")
     }
 
-    async function handleSubmit() {
+    async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault()
         const data = {
             companyName, position, location, workType, employmentType, expectedSalary: expectedSalary.trim() === "" ? (editing ? null : undefined) : Number(expectedSalary), status, link,
         }
 
-        try {
-            if (editing) onUpdate(await editApplication(editing._id, data))
-            else onAdd(await createApplication(data))
-            clearInputs()
-        } catch (e) {
-            console.error(e)
+        if (companyName.trim() && position.trim()) {
+            try {
+                if (editing) onUpdate(await editApplication(editing._id, data))
+                else onAdd(await createApplication(data))
+                clearInputs()
+            } catch (e) {
+                console.error(e)
+            }
         }
     }
 
+    useEffect(() => {
+        function handleKeyDown(e: KeyboardEvent) {
+            if (e.key === "Escape") {
+                onDone()
+            }
+        }
+
+        document.addEventListener("keydown", handleKeyDown)
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown)
+        }
+    }, [onDone])
+
     return (
         <div className="fixed inset-0 bg-black/40 flex items-end sm:items-center justify-center" onClick={onDone}>
-            <div className="relative flex flex-col bg-[#303030] w-full h-[80dvh] overflow-y-auto p-4 gap-2 rounded-t-lg sm:w-fit sm:h-fit sm:max-h-[90vh] sm:rounded-lg" onClick={e => e.stopPropagation()}>
-                {!editing ? (
-                    <div>
-                        <h1 className="font-semibold">New Application</h1>
-                    </div>
-                    ) : (
-                    <div>
-                        <h1 className="font-semibold">Edit Application</h1>
-                    </div>
-                )}
+            <div role="dialog" aria-modal="true" aria-labelledby="modal-title"  className="relative flex flex-col bg-[#303030] w-full h-[80dvh] overflow-y-auto p-4 gap-2 rounded-t-lg sm:w-fit sm:h-fit sm:max-h-[90vh] sm:rounded-lg" onClick={e => e.stopPropagation()}>
+                <h1 id="modal-title" className="font-semibold">
+                    {!editing ? "New Application" : "Edit Application"}
+                </h1>
 
                 <button onClick={() => onDone()} className="absolute top-4 right-4" title="Close">
                     <img src={closeIcon} alt="Close" className="icon-size"/>
