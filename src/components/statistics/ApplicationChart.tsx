@@ -5,7 +5,7 @@ import { Chart as ChartJs, ArcElement, Tooltip, Legend } from "chart.js"
 ChartJs.register(ArcElement, Tooltip, Legend)
 
 const STATUSES = ["Applied", "Interview", "Offer", "Rejected"] as const
-const COLOURS = []
+const COLORS = ["#8a8a85", "#d97757", "#7a9e7e", "#a85a5a"]
 
 function ApplicationChart({ applications }: { applications: Application[] }) {
     const counts = STATUSES.map(s => applications.filter(a => a.status === s).length )
@@ -13,13 +13,13 @@ function ApplicationChart({ applications }: { applications: Application[] }) {
         labels: [...STATUSES],
         datasets: [{
             data: counts,
+            backgroundColor: COLORS,
+            borderWidth: 0,
         }],
     }
 
     return(
-        <div>
-            <Doughnut data={data} options={{ cutout: "65%" }} />
-        </div>
+        <Doughnut data={data} options={{ cutout: "75%", plugins: { legend: { display: false } } }} />
     )
 }
 
