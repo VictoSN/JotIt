@@ -19,7 +19,7 @@ interface SelectProps<T extends string> {
 
 function Select<T extends string>({ value, options, onChange }: SelectProps<T>) {
     return (
-        <select className="modal-input" value={value} onChange={e => onChange(e.target.value as T)}>
+        <select className="bg-div modal-input" value={value} onChange={e => onChange(e.target.value as T)}>
             {options.map(o => <option key={o} value={o}>{o}</option>)}
         </select>
     )
@@ -88,12 +88,12 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
                     <div className="flex flex-col gap-4">
                         <div className="modal-input-div">
                             <h2 className="modal-input-header">Company Name</h2>
-                            <input className="modal-input" value={companyName} onChange={e => setCompanyName(e.target.value)} placeholder="e.g. Google"></input>
+                            <input className="bg-div modal-input" value={companyName} onChange={e => setCompanyName(e.target.value)} placeholder="e.g. Google"></input>
                         </div>
 
                         <div className="modal-input-div">
                             <h2 className="modal-input-header">Location</h2>
-                            <input className="modal-input" value={location} onChange={e => setLocation(e.target.value)} placeholder="e.g. Singapore"></input>
+                            <input className="bg-div modal-input" value={location} onChange={e => setLocation(e.target.value)} placeholder="e.g. Singapore"></input>
                         </div>
 
                         <div className="modal-input-div">
@@ -110,12 +110,12 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
                     <div className="flex flex-col gap-4">
                         <div className="modal-input-div">
                             <h2 className="modal-input-header">Position</h2>
-                            <input className="modal-input" value={position} onChange={e => setPosition(e.target.value)} placeholder="e.g. Software Developer"></input>
+                            <input className="bg-div modal-input" value={position} onChange={e => setPosition(e.target.value)} placeholder="e.g. Software Developer"></input>
                         </div>
 
                         <div className="modal-input-div">
                             <h2 className="modal-input-header">Expected Salary</h2>
-                            <div className="flex flex-row modal-input gap-1">
+                            <div className="flex flex-row bg-div modal-input gap-1">
                                 <p>$</p>
                                 <input type='number' min="0" step="1" value={expectedSalary} onChange={e =>  setExpectedSalary(e.target.value)} placeholder="90000"></input>
                             </div>
@@ -128,7 +128,7 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
 
                         <div className="modal-input-div">
                             <h2 className="modal-input-header">Job Posting Link</h2>
-                            <input className="modal-input" value={link} onChange={e => setLink(e.target.value)} placeholder="https://google.com/jobs/software-developer"></input>
+                            <input className="bg-div modal-input" value={link} onChange={e => setLink(e.target.value)} placeholder="https://google.com/jobs/software-developer"></input>
                         </div>
                     </div>
                 </div>

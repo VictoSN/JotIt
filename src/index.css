@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+body {
+    background-color: #191919;
+    color: #f0f0f0;
+}
+
 button {
     transition: transform 0.3s ease;
 }
@@ -11,6 +16,18 @@ button:hover {
 }
 
 @layer components {
+    .bg-div {
+        @apply border-[0.5px] border-solid border-[#4e4e4e];
+    }
+
+    .bg-div:hover {
+        @apply border-1 border-[#6e6e6e];
+    }
+
+    .statistics-div {
+        @apply flex flex-col px-4 py-2 rounded items-start justify-center;
+    }
+
     .modal-input-div {
         @apply flex flex-col gap-1;
     }
@@ -20,10 +37,6 @@ button:hover {
     }
 
     .modal-input {
-        @apply border-[0.5px] border-solid border-[#4e4e4e] rounded-md px-2 py-1 bg-[#3b3b3b];
-    }
-
-    .modal-input:hover {
-        @apply border-1 border-[#6e6e6e];
+        @apply rounded-md px-2 py-1 bg-[#3b3b3b];
     }
 }

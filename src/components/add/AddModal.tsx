@@ -24,7 +24,6 @@ function AddModal({ editing, onAdd, onUpdate, onClose }: AddModalProps) {
             {open ? '' : 
                 <button onClick={() => setShow(true)} className="fixed bottom-10 right-10 bg-yellow-400 p-4 rounded-3xl flex flex-row items-center gap-1">
                     <img src={plusIcon} alt="Add" className="w-4 h-4"/>
-                    New Application
                 </button>}
             {open && <AddApplication onAdd={a => { onAdd(a); done() }} editing={editing} onUpdate={a => { onUpdate(a); done() }} onDone={done} />}
         </div>

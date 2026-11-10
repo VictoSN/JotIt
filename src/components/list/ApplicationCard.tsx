@@ -15,7 +15,7 @@ interface ApplicationCardProps {
 function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: ApplicationCardProps) {
     const { _id, companyName, position, location, workType, employmentType, expectedSalary, status, link } = application
     return (
-        <div className="flex w-full justify-between border-solid border-1 py-2 px-4 rounded-lg">
+        <div className="bg-div flex w-full justify-between py-2 px-4 rounded-lg bg-[#1c1c1c]">
             <div className="flex flex-col">
                 <div className="flex flex-row gap-2">
                     <h1>{companyName}</h1>
@@ -31,7 +31,9 @@ function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: Applica
                     }
                     <p>{workType}</p>
                     <p>{employmentType}</p>
-                    <p>${expectedSalary}</p>
+                    {expectedSalary && 
+                        <p>${expectedSalary}</p>
+                    }
                     {link && 
                         <div className="flex flex-row items-center gap-1">
                             <a href={link} target="_blank" rel="noopener noreferrer">Link</a>

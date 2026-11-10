@@ -48,7 +48,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-dvh bg-[#191919] text-[#f0f0f0]">
+    <div className="min-h-dvh">
       <div className="mx-auto w-full max-w-6xl px-5 py-8 sm:px-8">
         <header className="flex w-full flex-row justify-between">
           <div className="flex flex-row gap-2">
