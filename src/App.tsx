@@ -50,12 +50,12 @@ function App() {
   return (
     <div className="min-h-dvh">
       <div className="mx-auto w-full max-w-6xl px-5 py-8 sm:px-8">
-        <header className="flex w-full flex-row justify-between">
+        <header className="flex w-full flex-row justify-between mb-8">
           <div className="flex flex-row gap-2">
             <a href="https://github.com/VictoSN" target="_blank" rel="noopener noreferrer">
               <img src="/logo-circle.png" alt="Logo" className="w-[30px] h-[30px]"/>
             </a>
-            <h1>JotIt</h1>
+            <h1 className="font-serif-display text-2xl">JotIt</h1>
           </div>
 
           <SearchBar search={search} setSearch={setSearch} />
@@ -64,9 +64,9 @@ function App() {
         {applications.length > 0 ? (
           <main className="flex flex-col gap-4">
             {!search && (
-              <div className="flex flex-col">
-                <h1>Statistics</h1>
-                <div className="flex flex-col sm:flex-row items-center gap-4">
+              <div className="flex flex-col mb-4">
+                <h1 className="title">Statistics</h1>
+                <div className="flex flex-col sm:flex-row items-center gap-8 mx-32">
                   <div className="w-44 shrink-0">
                     <ApplicationChart applications={applications} />
                   </div>
@@ -77,12 +77,12 @@ function App() {
               </div>
             )}
 
-            <h1>Applications</h1>
             <div>
+              <h1 className="title">Applications</h1>
               {search && filteredApplications.length === 0 ? (
                 <p>No results for "{search}"</p>
               ) : (
-                <div>
+                <div className="flex flex-col gap-2">
                   {search && <p>Searching for "{search}"</p>}
                   <ApplicationList applications={filteredApplications} onEdit={setEditing} onDelete={handleDelete} onDuplicate={handleDuplicate} />
                 </div>
@@ -90,7 +90,7 @@ function App() {
             </div>
           </main>
           ) : (
-            <p>Applications not found</p>
+            <p>Applications not found.</p>
         )}
 
         <AddModal onAdd={handleSubmit} editing={editing} onUpdate={handleUpdate} onClose={() => setEditing(null)} />

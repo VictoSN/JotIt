@@ -20,6 +20,10 @@ button:hover {
 }
 
 @layer components {
+    .title {
+        @apply text-xs uppercase tracking-wider text-[#9a9a9a] mb-3;
+    }
+
     .bg-div {
         @apply border-[0.5px] border-solid border-[#4e4e4e];
     }

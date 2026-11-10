@@ -87,7 +87,10 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
                 <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-4">
                         <div className="modal-input-div">
-                            <h2 className="modal-input-header">Company Name</h2>
+                            <div className="flex items-center gap-1">
+                                <h2 className="modal-input-header">Company Name</h2>
+                                <p className="text-red-500">*</p>
+                            </div>
                             <input className="bg-div modal-input" value={companyName} onChange={e => setCompanyName(e.target.value)} placeholder="e.g. Google"></input>
                         </div>
 
@@ -109,7 +112,10 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
 
                     <div className="flex flex-col gap-4">
                         <div className="modal-input-div">
-                            <h2 className="modal-input-header">Position</h2>
+                            <div className="flex items-center gap-1">
+                                <h2 className="modal-input-header">Position</h2>
+                                <p className="text-red-500">*</p>
+                            </div>
                             <input className="bg-div modal-input" value={position} onChange={e => setPosition(e.target.value)} placeholder="e.g. Software Developer"></input>
                         </div>
 

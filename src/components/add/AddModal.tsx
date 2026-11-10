@@ -22,7 +22,7 @@ function AddModal({ editing, onAdd, onUpdate, onClose }: AddModalProps) {
     return(
         <div>
             {open ? '' : 
-                <button onClick={() => setShow(true)} className="fixed bottom-10 right-10 bg-[#d97757] p-4 rounded-3xl flex flex-row items-center gap-1" title="Add">
+                <button onClick={() => setShow(true)} className="fixed bottom-10 right-10 bg-[#d97757] p-4 rounded-full shadow-lg" title="Add">
                     <img src={plusIcon} alt="Add" className="icon-size"/>
                 </button>}
             {open && <AddApplication onAdd={a => { onAdd(a); done() }} editing={editing} onUpdate={a => { onUpdate(a); done() }} onDone={done} />}

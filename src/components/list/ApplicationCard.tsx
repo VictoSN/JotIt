@@ -14,36 +14,44 @@ interface ApplicationCardProps {
 
 function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: ApplicationCardProps) {
     const { _id, companyName, position, location, workType, employmentType, expectedSalary, status, link } = application
+    
+    const COLORS: Record<string, string> = {
+        Applied: "bg-[#3a3a38] text-[#c4c4bf]",
+        Interview: "bg-[#d97757]/20 text-[#e8957a]",
+        Offer: "bg-[#7a9e7e]/20 text-[#9bc29f]",
+        Rejected: "bg-[#a85a5a]/20 text-[#d08a8a]",
+    }
+
     return (
         <div className="bg-div flex w-full justify-between p-4 rounded-lg bg-[#222222] hover:bg-[#242424] border-0">
             <div className="flex flex-col">
                 <div className="flex flex-row gap-2">
-                    <h1>{companyName}</h1>
-                    <p>{status}</p>
+                    <h3 className="font-serif-display text-lg">{companyName}</h3>
+                    <span className={`px-2 rounded-xl ${status ? COLORS[status] ?? "" : ""}`}>{status}</span>
                 </div>
-                <p>{position}</p>
-                <div className="flex flex-row gap-2">
+                <p className="text-sm text-[#c4c4c4]">{position}</p>
+                <div className="flex flex-wrap items-center gap-2 text-xs text-[#9a9a9a] mt-1">
                     {location && 
-                        <div className="flex flex-row items-center">
-                            <img src={locationIcon} alt="Location" className="w-[24px] h-[24px]"/>
+                        <div className="flex flex-row items-center gap-1">
+                            <img src={locationIcon} alt="Location" className="icon-size opacity-60"/>
                             {location}
                         </div>
                     }
                     <p>{workType}</p>
                     <p>{employmentType}</p>
                     {expectedSalary && 
-                        <p>${expectedSalary}</p>
+                        <p>${expectedSalary.toLocaleString()}</p>
                     }
                     {link && 
                         <div className="flex flex-row items-center gap-1 border-b border-transparent hover:border-b-[#4e4e4e]">
                             <a href={link} target="_blank" rel="noopener noreferrer">Link</a>
-                            <img src={linkOutIcon} alt="Link" className="icon-size"/>
+                            <img src={linkOutIcon} alt="Link" className="icon-size opacity-60"/>
                         </div>
                     }
                 </div>
             </div>
 
-            <div className="flex flex-row gap-2 h-fit">
+            <div className="flex gap-2 h-fit shrink-0">
                 <button onClick={() => onEdit(application)} className="list-button" title="Edit">
                     <img src={editIcon} alt="Edit" className="icon-size"/>
                 </button>
