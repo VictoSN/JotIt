@@ -94,7 +94,7 @@ function App() {
             </div>
           </main>
           ) : (
-            <div>
+            <div className="flex flex-col gap-2">
               <p>Applications not found.</p>
               <NotFound />
             </div>
