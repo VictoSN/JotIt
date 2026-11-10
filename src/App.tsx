@@ -51,7 +51,7 @@ function App() {
   return (
     <div className="min-h-dvh">
       <div className="mx-auto w-full max-w-6xl px-5 py-8 sm:px-8">
-        <header className="flex w-full flex-row justify-between mb-8 items-center">
+        <header className="flex w-full flex-col sm:flex-row justify-between mb-8 gap-2 sm:items-center">
           <div className="flex flex-row gap-2">
             <a href="https://github.com/VictoSN" target="_blank" rel="noopener noreferrer">
               <img src="/logo-circle.png" alt="Logo" className="w-[30px] h-[30px]"/>

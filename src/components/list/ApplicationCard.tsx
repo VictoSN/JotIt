@@ -23,7 +23,7 @@ function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: Applica
     }
 
     return (
-        <div className="bg-div flex w-full justify-between p-4 rounded-lg bg-[#222222] hover:bg-[#242424] border-0">
+        <div className="bg-div flex flex-col sm:flex-row gap-1 w-full justify-between p-4 rounded-lg bg-[#222222] hover:bg-[#242424] border-0">
             <div className="flex flex-col">
                 <div className="flex flex-row gap-2">
                     <h3 className="font-serif-display text-lg">{companyName}</h3>
@@ -51,7 +51,7 @@ function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: Applica
                 </div>
             </div>
 
-            <div className="flex gap-2 h-fit shrink-0">
+            <div className="flex gap-2 h-fit shrink-0 justify-end">
                 <button onClick={() => onEdit(application)} className="list-button" title="Edit">
                     <img src={editIcon} alt="Edit" className="icon-size"/>
                 </button>

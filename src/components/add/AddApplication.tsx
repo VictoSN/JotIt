@@ -68,8 +68,8 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
     }
 
     return (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center" onClick={onDone}>
-            <div className="relative flex flex-col bg-[#303030] p-4 gap-2 rounded-lg" onClick={e => e.stopPropagation()}>
+        <div className="fixed inset-0 bg-black/40 flex items-end sm:items-center justify-center" onClick={onDone}>
+            <div className="relative flex flex-col bg-[#303030] w-full h-[80dvh] overflow-y-auto p-4 gap-2 rounded-t-lg sm:w-fit sm:h-fit sm:max-h-[90vh] sm:rounded-lg" onClick={e => e.stopPropagation()}>
                 {!editing ? (
                     <div>
                         <h1 className="font-semibold">New Application</h1>
