@@ -83,66 +83,69 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
                 <button onClick={() => onDone()} className="absolute top-4 right-4" title="Close">
                     <img src={closeIcon} alt="Close" className="icon-size"/>
                 </button>
+                
+                <form id="application-form" onSubmit={handleSubmit}>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="flex flex-col gap-4">
-                        <div className="modal-input-div">
-                            <div className="flex items-center gap-1">
-                                <h2 className="modal-input-header">Company Name</h2>
-                                <p className="text-red-500">*</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="flex flex-col gap-4">
+                            <div className="modal-input-div">
+                                <div className="flex items-center gap-1">
+                                    <h2 className="modal-input-header">Company Name</h2>
+                                    <p className="text-red-500">*</p>
+                                </div>
+                                <input className="bg-div modal-input" required value={companyName} onChange={e => setCompanyName(e.target.value)} placeholder="e.g. Google"></input>
                             </div>
-                            <input className="bg-div modal-input" value={companyName} onChange={e => setCompanyName(e.target.value)} placeholder="e.g. Google"></input>
+
+                            <div className="modal-input-div">
+                                <h2 className="modal-input-header">Location</h2>
+                                <input className="bg-div modal-input" value={location} onChange={e => setLocation(e.target.value)} placeholder="e.g. Singapore"></input>
+                            </div>
+
+                            <div className="modal-input-div">
+                                <h2 className="modal-input-header">Work Type</h2>
+                                <Select value={workType} options={WORK_TYPES} onChange={setWorkType} />
+                            </div>
+
+                            <div className="modal-input-div">
+                                <h2 className="modal-input-header">Status</h2>
+                                <Select value={status} options={STATUSES} onChange={setStatus} />
+                            </div>
                         </div>
 
-                        <div className="modal-input-div">
-                            <h2 className="modal-input-header">Location</h2>
-                            <input className="bg-div modal-input" value={location} onChange={e => setLocation(e.target.value)} placeholder="e.g. Singapore"></input>
-                        </div>
+                        <div className="flex flex-col gap-4">
+                            <div className="modal-input-div">
+                                <div className="flex items-center gap-1">
+                                    <h2 className="modal-input-header">Position</h2>
+                                    <p className="text-red-500">*</p>
+                                </div>
+                                <input className="bg-div modal-input" required value={position} onChange={e => setPosition(e.target.value)} placeholder="e.g. Software Developer"></input>
+                            </div>
 
-                        <div className="modal-input-div">
-                            <h2 className="modal-input-header">Work Type</h2>
-                            <Select value={workType} options={WORK_TYPES} onChange={setWorkType} />
-                        </div>
+                            <div className="modal-input-div">
+                                <h2 className="modal-input-header">Expected Salary</h2>
+                                <div className="flex flex-row bg-div modal-input gap-1">
+                                    <p>$</p>
+                                    <input className="outline-none" type='number' min="0" step="1" value={expectedSalary} onChange={e =>  setExpectedSalary(e.target.value)} placeholder="90000"></input>
+                                </div>
+                            </div>
 
-                        <div className="modal-input-div">
-                            <h2 className="modal-input-header">Status</h2>
-                            <Select value={status} options={STATUSES} onChange={setStatus} />
+                            <div className="modal-input-div">
+                                <h2 className="modal-input-header">Employment Type</h2>
+                                <Select value={employmentType} options={EMPLOYMENT_TYPES} onChange={setEmploymentType} />
+                            </div>
+
+                            <div className="modal-input-div">
+                                <h2 className="modal-input-header">Job Posting Link</h2>
+                                <input className="bg-div modal-input" value={link} onChange={e => setLink(e.target.value)} placeholder="https://google.com/jobs/software-developer"></input>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-4">
-                        <div className="modal-input-div">
-                            <div className="flex items-center gap-1">
-                                <h2 className="modal-input-header">Position</h2>
-                                <p className="text-red-500">*</p>
-                            </div>
-                            <input className="bg-div modal-input" value={position} onChange={e => setPosition(e.target.value)} placeholder="e.g. Software Developer"></input>
-                        </div>
-
-                        <div className="modal-input-div">
-                            <h2 className="modal-input-header">Expected Salary</h2>
-                            <div className="flex flex-row bg-div modal-input gap-1">
-                                <p>$</p>
-                                <input className="outline-none" type='number' min="0" step="1" value={expectedSalary} onChange={e =>  setExpectedSalary(e.target.value)} placeholder="90000"></input>
-                            </div>
-                        </div>
-
-                        <div className="modal-input-div">
-                            <h2 className="modal-input-header">Employment Type</h2>
-                            <Select value={employmentType} options={EMPLOYMENT_TYPES} onChange={setEmploymentType} />
-                        </div>
-
-                        <div className="modal-input-div">
-                            <h2 className="modal-input-header">Job Posting Link</h2>
-                            <input className="bg-div modal-input" value={link} onChange={e => setLink(e.target.value)} placeholder="https://google.com/jobs/software-developer"></input>
-                        </div>
+                    <div className="flex flex-row gap-4 justify-end border-t border-solid border-[#6e6e6e] pt-2">                    
+                        <button type="button" onClick={onDone} title="Cancel">Cancel</button>
+                        <button type="submit" form="application-form" className='cursor-pointer bg-[#efefef] text-[#303030] py-1 px-2 rounded-md' title={editing ? "Save" : "Add"}>{ editing ? "Save" : "Add" }</button>
                     </div>
-                </div>
-
-                <div className="flex flex-row gap-4 justify-end border-t border-solid border-[#6e6e6e] pt-2">                    
-                    <button onClick={onDone} title="Cancel">Cancel</button>
-                    <button onClick={handleSubmit} className='cursor-pointer bg-[#efefef] text-[#303030] py-1 px-2 rounded-md' title={editing ? "Save" : "Add"}>{ editing ? "Save" : "Add" }</button>
-                </div>
+                </form>
             </div>
         </div>
     )
