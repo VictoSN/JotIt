@@ -73,7 +73,7 @@ function App() {
             {!search && (
               <div className="flex flex-col mb-4">
                 <h1 className="title">Statistics</h1>
-                <div className="flex flex-col sm:flex-row items-center gap-8 lg:mx-32">
+                <div className="flex flex-col bg-[#1e1e1e] w-full px-4 py-8 rounded-xl sm:flex-row items-center gap-8 md:px-32">
                   <div className="w-44 shrink-0">
                     <ApplicationChart applications={applications} />
                   </div>
