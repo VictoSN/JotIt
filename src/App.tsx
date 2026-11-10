@@ -6,6 +6,7 @@ import type { Application } from "./types"
 import { deleteApplication, duplicateApplication, getApplications } from "./api/application"
 import ApplicationChart from "./components/statistics/ApplicationChart"
 import AddModal from "./components/add/AddModal"
+import NotFound from "./components/NotFound"
 
 function App() {
   const [applications, setApplications] = useState<Application[]>([])
@@ -80,17 +81,23 @@ function App() {
             <div>
               <h1 className="title">Applications</h1>
               {search && filteredApplications.length === 0 ? (
-                <p>No results for "{search}"</p>
+                <div className="flex flex-col gap-2">
+                  <p>No results for "{search}"</p>
+                  <NotFound />
+                </div>
               ) : (
                 <div className="flex flex-col gap-2">
-                  {search && <p>Searching for "{search}"</p>}
+                  {search && <p>{filteredApplications.length} results for "{search}"</p>}
                   <ApplicationList applications={filteredApplications} onEdit={setEditing} onDelete={handleDelete} onDuplicate={handleDuplicate} />
                 </div>
               )}
             </div>
           </main>
           ) : (
-            <p>Applications not found.</p>
+            <div>
+              <p>Applications not found.</p>
+              <NotFound />
+            </div>
         )}
 
         <AddModal onAdd={handleSubmit} editing={editing} onUpdate={handleUpdate} onClose={() => setEditing(null)} />
