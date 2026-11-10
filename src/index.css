@@ -3,6 +3,11 @@
 body {
     background-color: #191919;
     color: #f0f0f0;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.font-serif-display {
+    font-family: Georgia, "Times New Roman", serif;
 }
 
 button {

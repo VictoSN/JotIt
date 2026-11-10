@@ -9,22 +9,17 @@ function ApplicationStatistic({ applications }: { applications: Application[] })
 
     return(
         <div className="grid grid-cols-2 gap-4 w-full">
-            <div className="statistics-div">
-                <p>Total Tracked</p>
-                {total}
-            </div>
-            <div className="statistics-div">
-                <p>Interviews</p>
-                {interview}
-            </div>
-            <div className="statistics-div">
-                <p>Response Rate</p>
-                {responseRate}%
-            </div>
-            <div className="statistics-div">
-                <p>Offers</p>
-                {offer}
-            </div>
+            {[
+                ["Total tracked", total],
+                ["Interviews", interview],
+                ["Response rate", `${responseRate}%`],
+                ["Offers", offer],
+            ].map(([label, value]) => (
+                <div key={label} className="statistics-div">
+                    <p className="text-xs text-[#9a9a9a]">{label}</p>
+                    <span className="font-serif-display text-3xl">{value}</span>
+                </div>
+            ))}
         </div>
     )
 }
