@@ -18,7 +18,7 @@ MONGO_URI=connection_string/JotIt
 4. Run:
 
 ```bash
-node src/server/index.ts
+node npx tsx src/server/index.ts
 ```
 
 5. On another terminal, run:
