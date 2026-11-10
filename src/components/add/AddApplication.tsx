@@ -55,7 +55,7 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
 
     async function handleSubmit() {
         const data = {
-            companyName, position, location, workType, employmentType, expectedSalary: expectedSalary ? Number(expectedSalary) : undefined, status, link,
+            companyName, position, location, workType, employmentType, expectedSalary: expectedSalary.trim() === "" ? (editing ? null : undefined) : Number(expectedSalary), status, link,
         }
 
         try {

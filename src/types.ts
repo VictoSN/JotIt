@@ -5,7 +5,7 @@ export type Application = {
     location?: string
     workType?: "On-Site" | "Hybrid" | "Remote"
     employmentType?: "Full-Time" | "Part-Time" | "Internship" | "Contract"
-    expectedSalary?: number
+    expectedSalary?: number | null
     status?: "Applied" | "Interview" | "Offer" | "Rejected"
     link?: string
 }
