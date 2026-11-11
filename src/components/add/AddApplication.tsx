@@ -136,7 +136,7 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
                                 <h2 className="modal-input-header">Expected Salary</h2>
                                 <div className="flex flex-row bg-div modal-input gap-1">
                                     <p>$</p>
-                                    <input className="outline-none" type='number' min="0" step="1" value={expectedSalary} onChange={e =>  setExpectedSalary(e.target.value)} placeholder="90000"></input>
+                                    <input className="outline-none w-full" type='number' min="0" step="1" value={expectedSalary} onChange={e =>  setExpectedSalary(e.target.value)} placeholder="90000"></input>
                                 </div>
                             </div>
 
