@@ -24,6 +24,9 @@ The app is split into 2 parts: a React client for the frontend and an Express/Mo
 | --- | --- |
 | `npm run dev` | Start the Vite development server |
 | `npm run dev:server` | Start the Express API with `tsx` |
+| `npm run build` | Type-check and build the client |
+| `npm run lint` | Run ESLint |
+| `npm run preview` | Preview the production build |
 
 ## Prerequisites
 - Node.js 20+
