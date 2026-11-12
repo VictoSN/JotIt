@@ -9,7 +9,7 @@ type CreateBody = Pick<IApplication, "companyName" | "position" | "location" | "
 router.get('/', async(_req, res: Response<IApplication[] | ErrorBody>) => {
     try {
         res.json(await Application.find())
-    } catch (e) {
+    } catch {
         res.status(500).json({ error: "Failed to fetch applications" })
     }
 })
@@ -20,7 +20,7 @@ router.get('/:id', async (req: Request<{ id: string}>, res: Response<IApplicatio
     res.json(app)
 })
 
-router.post('/', async (req: Request<{}, IApplication | ErrorBody, CreateBody>, res) => {
+router.post('/', async (req: Request<Record<string, never>, IApplication | ErrorBody, CreateBody>, res) => {
     const created = await Application.create(req.body)
     res.status(201).json(created)
 })
