@@ -75,6 +75,10 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
             if (e.key === "Escape") {
                 onDone()
             }
+
+            if (e.key === "Enter") {
+                handleSubmit
+            }
         }
 
         document.addEventListener("keydown", handleKeyDown)
