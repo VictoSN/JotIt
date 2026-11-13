@@ -3,6 +3,8 @@ import type { Application } from "../types"
 const BASE = "http://localhost:3000/applications"
 
 export async function createApplication(data: unknown) {
+    // fetch is used to utilize the API methods
+    // any non 2xx response results in an error being thrown
     const res = await fetch(BASE, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

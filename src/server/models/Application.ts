@@ -1,5 +1,7 @@
 import mongoose, { type InferSchemaType } from "mongoose"
 
+// Enum is used to ensure all the available options
+// Only 'companyName' and 'position' are mandatory for user inputs
 const applicationSchema = new mongoose.Schema({
     companyName: { type: String, required: true },
     position: { type: String, required: true },

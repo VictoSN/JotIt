@@ -8,6 +8,7 @@ const STATUSES = ["Applied", "Interview", "Offer", "Rejected"] as const
 const COLORS = ["#8a8a85", "#d97757", "#7a9e7e", "#a85a5a"]
 
 function ApplicationChart({ applications }: { applications: Application[] }) {
+    // Counted based on the applications statuses matching the 'STATUSES' array to ensure valid input
     const counts = STATUSES.map(s => applications.filter(a => a.status === s).length )
     const data = {
         labels: [...STATUSES],

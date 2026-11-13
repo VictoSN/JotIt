@@ -43,6 +43,8 @@ router.patch('/:id', async(req: Request<{ id: string}, IApplication | ErrorBody,
 router.post('/:id/duplicate', async(req: Request<{ id: string}>, res: Response<IApplication | ErrorBody>) => {
     const original = await Application.findById(req.params.id).lean()
     if (!original) return res.status(404).json({ error: "Not found" })
+    // Strips '_id', 'createdAt', 'updatedAt', '__v' from the original
+    // to replace it with the new clone's details
     const { _id, createdAt, updatedAt, __v, ...data } = original
     const copy = await Application.create(data)
     res.status(201).json(copy)
