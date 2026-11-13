@@ -11,21 +11,26 @@ interface AddModalProps {
 }
 
 function AddModal({ editing, onAdd, onUpdate, onClose }: AddModalProps) {
-    const [show, setShow] = useState(false)
-    const open = show || editing !== null
+    const [adding, setAdding] = useState(false)
+
+    // The modal is open if its adding or editing an application
+    const open = adding || editing !== null
 
     function done() {
-        setShow(false)
+        setAdding(false)
         onClose()
     }
 
     return(
         <div>
-            {open ? '' : 
-                <button onClick={() => setShow(true)} className="fixed bottom-10 right-10 bg-[#d97757] p-4 rounded-full shadow-lg" title="Add">
+            {!open && 
+                <button onClick={() => setAdding(true)} className="fixed bottom-10 right-10 bg-[#d97757] p-4 rounded-full shadow-lg" title="Add">
                     <img src={plusIcon} alt="Add" className="icon-size"/>
-                </button>}
-            {open && <AddApplication onAdd={a => { onAdd(a); done() }} editing={editing} onUpdate={a => { onUpdate(a); done() }} onDone={done} />}
+                </button>
+            }
+            {open && 
+                <AddApplication onAdd={a => { onAdd(a); done() }} editing={editing} onUpdate={a => { onUpdate(a); done() }} onDone={done} />
+            }
         </div>
     )
 }
