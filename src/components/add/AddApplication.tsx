@@ -56,11 +56,14 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
     async function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
         const data = {
+            // When editing, it send null to clear the field since JSON.stringy drops undefined
+            // this would lead to the old value to be kept
             companyName, position, location, workType, employmentType, expectedSalary: expectedSalary.trim() === "" ? (editing ? null : undefined) : Number(expectedSalary), status, link,
         }
 
         if (companyName.trim() && position.trim()) {
             try {
+                // Same form is used for editing and adding due to their similar nature
                 if (editing) onUpdate(await editApplication(editing._id, data))
                 else onAdd(await createApplication(data))
                 clearInputs()
@@ -75,14 +78,13 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
             if (e.key === "Escape") {
                 onDone()
             }
-
-            if (e.key === "Enter") {
-                handleSubmit
-            }
         }
-
+        
+        // To close the modal no matter which input has focus
         document.addEventListener("keydown", handleKeyDown)
 
+        // Clean up to avoid multiple event listeners 
+        // that could lead to multiple 'onDone' triggers
         return () => {
             document.removeEventListener("keydown", handleKeyDown)
         }
