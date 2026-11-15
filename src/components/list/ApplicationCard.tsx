@@ -14,7 +14,12 @@ interface ApplicationCardProps {
 
 function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: ApplicationCardProps) {
     const { _id, companyName, position, location, workType, employmentType, expectedSalary, status, link } = application
-    
+
+    // Add 'https://' in case its not included to avoid relative links
+    const href = link
+        ? /^https?:\/\//i.test(link) ? link : `https://${link}`
+        : undefined
+
     // Statuses are map to a class to bind them to a specific Tailwind CSS
     const COLORS: Record<string, string> = {
         Applied: "bg-[#3a3a38] text-[#c4c4bf]",
@@ -40,13 +45,12 @@ function ApplicationCard({ application, onEdit, onDelete, onDuplicate }: Applica
                     }
                     <p>{workType}</p>
                     <p>{employmentType}</p>
-                    {expectedSalary && 
-                        // Turned to string to add the commas
+                    {expectedSalary != null && 
+                        // Format string to number using locale separator
                         <p>${expectedSalary.toLocaleString()}</p>
                     }
                     {link && 
-                        // Normalized to avoid harmful links
-                        <a href={link} target="_blank" rel="noopener noreferrer" className="flex flex-row gap-1 border-b border-transparent hover:border-b-[#4e4e4e]">
+                        <a href={href} title={href} target="_blank" rel="noopener noreferrer" className="flex flex-row gap-1 border-b border-transparent hover:border-b-[#4e4e4e]">
                             <p>Link</p>
                             <img src={linkOutIcon} alt="Link" className="icon-size opacity-60"/>
                         </a>

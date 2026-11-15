@@ -30,12 +30,14 @@ function App() {
     setApplications(prev => [...prev, created])
   }
 
-  // Each mutation updates...
+  // Each mutation updates the local state from the API response rather than refetching the whole list.
+  // This keeps the UI responsive and avoid a second request.
   function handleUpdate(updated: Application) {
     setApplications(prev => prev.map(a => a._id === updated._id ? updated : a))
   }
 
-  // Each mutation updates...
+  // Each mutation updates the local state from the API response rather than refetching the whole list.
+  // This keeps the UI responsive and avoid a second request.
   async function handleDelete(id: string) {
     const confirmed = window.confirm(
       "Are you sure you want to delete this application permanently?"
@@ -53,12 +55,13 @@ function App() {
     }
   }
 
-  // Each mutation updates...
+  // Each mutation updates the local state from the API response rather than refetching the whole list.
+  // This keeps the UI responsive and avoid a second request.
   async function handleDuplicate(id: string) {
       try {
           const copy = await duplicateApplication(id)
 
-          // Server returns a new document with different '_id' to avoid cloning locally
+          // Server creates the copy with a new '_id' and appends its response instead of cloning locally.
           setApplications(prev => [...prev, copy])
       } catch (e) {
           console.error(e)
