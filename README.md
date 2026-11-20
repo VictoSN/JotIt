@@ -7,6 +7,9 @@ A job application tracker made using MERN stack with TypeScript and Tailwind CSS
 3. Stored in MongoDB Atlas
 4. Rest API built with Express and Node.js
 
+## Try it here (localStorage Version)
+[Link](https://victosn.github.io/JotIt/)
+
 ## How it works
 The app is split into 2 parts: a React client for the frontend and an Express/MongoDB API for the backend
 
