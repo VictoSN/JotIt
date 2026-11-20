@@ -7,6 +7,7 @@ import { deleteApplication, duplicateApplication, getApplications } from "./api/
 import ApplicationChart from "./components/statistics/ApplicationChart"
 import AddModal from "./components/add/AddModal"
 import NotFound from "./components/NotFound"
+import logo from "/logo-circle.png" 
 
 function App() {
   const [applications, setApplications] = useState<Application[]>([])
@@ -74,7 +75,7 @@ function App() {
         <header className="flex w-full flex-col sm:flex-row justify-between mb-8 gap-2 sm:items-center">
           <div className="flex flex-row gap-2">
             <a href="https://github.com/VictoSN" target="_blank" rel="noopener noreferrer">
-              <img src="/logo-circle.png" alt="Logo" className="w-[30px] h-[30px]"/>
+              <img src={logo} alt="Logo" className="w-[30px] h-[30px]"/>
             </a>
             <h1 className="font-serif-display text-2xl">JotIt</h1>
           </div>

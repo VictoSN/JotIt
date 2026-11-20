@@ -56,8 +56,6 @@ function AddApplication({ editing, onAdd, onUpdate, onDone }: AddApplicationProp
     async function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
         const data = {
-            // When editing, it send null to clear the field since JSON.stringy drops undefined
-            // this would lead to the old value to be kept
             companyName, position, location, workType, employmentType, expectedSalary: expectedSalary.trim() === "" ? (editing ? null : undefined) : Number(expectedSalary), status, link,
         }
 
